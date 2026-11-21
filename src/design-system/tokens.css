@@ -1,0 +1,122 @@
+/*
+ * Hearing Solutions design tokens
+ * ---------------------------------------------------------------------------
+ * Every value the site uses comes from here. Components reference these
+ * custom properties and never hard-code colors, sizes, or spacing.
+ *
+ * Contrast: every text/UI pairing used by the components is listed in
+ * scripts/check-contrast.mjs. Run `npm run check:contrast` after changing any
+ * color. Targets (WCAG 2.2 AA): 4.5:1 for text, 3:1 for UI boundaries/focus.
+ */
+
+:root {
+  /* ---- Raw palette: paper, denim, rust, sage ---------------------------- */
+  --paper-50: #fdfaf3;
+  --paper-100: #f8f1e3;
+  --paper-200: #efe3cb;
+  --paper-400: #9c8a6e; /* only for decorative lines, never text */
+
+  --ink-900: #2b2622;
+  --ink-700: #574b41;
+
+  --denim-100: #e3eaf2;
+  --denim-600: #345678;
+  --denim-700: #2a4763;
+  --denim-800: #1e3349;
+
+  --rust-100: #f7e4da;
+  --rust-600: #a3471f;
+  --rust-700: #8a3a18;
+
+  --sage-100: #e4ebdd;
+  --sage-600: #4f6847;
+  --sage-700: #3f5439;
+
+  --honey-100: #f8ebc9;
+  --honey-700: #6e5310;
+
+  /* ---- Semantic color roles (use these in components) ------------------- */
+  --color-bg: var(--paper-50);
+  --color-surface: var(--paper-100);
+  --color-surface-strong: var(--paper-200);
+  --color-text: var(--ink-900);
+  --color-text-muted: var(--ink-700);
+  --color-border: var(--ink-700); /* form control & card edges: 3:1+ */
+  --color-rule: var(--paper-400); /* decorative dividers */
+
+  --color-link: var(--denim-700);
+  --color-link-hover: var(--denim-800);
+
+  --color-primary: var(--denim-700);
+  --color-primary-hover: var(--denim-800);
+  --color-on-primary: var(--paper-50);
+
+  --color-accent: var(--rust-600);
+  --color-accent-hover: var(--rust-700);
+  --color-on-accent: var(--paper-50);
+
+  --color-focus: var(--denim-800);
+  --color-focus-halo: var(--paper-50);
+
+  --color-error: var(--rust-700);
+  --color-error-bg: var(--rust-100);
+  --color-success: var(--sage-700);
+  --color-success-bg: var(--sage-100);
+  --color-info: var(--denim-700);
+  --color-info-bg: var(--denim-100);
+  --color-warning: var(--honey-700);
+  --color-warning-bg: var(--honey-100);
+
+  /* Local services get their own tint so they read as separate from shop */
+  --color-service: var(--sage-700);
+  --color-service-bg: var(--sage-100);
+
+  /* ---- Typography ------------------------------------------------------- */
+  --font-heading: Georgia, "Times New Roman", Times, serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI",
+    Roboto, Arial, sans-serif;
+
+  /* Base is 20px (assuming the browser default of 16px); scale ratio 1.2.
+     All sizes are rem so user font-size settings and zoom are respected. */
+  --text-sm: 0.875rem; /* ~17.5px — smallest size used anywhere */
+  --text-base: 1rem; /* set to 20px on <html> in base.css */
+  --text-lg: 1.2rem;
+  --text-xl: 1.44rem;
+  --text-2xl: 1.728rem;
+  --text-3xl: clamp(1.9rem, 1.5rem + 2vw, 2.4rem);
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.6;
+  --measure: 65ch; /* comfortable line length for running text */
+
+  /* ---- Spacing (rem, so it scales with text) ---------------------------- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+
+  /* ---- Shape ------------------------------------------------------------ */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --border-width: 2px;
+
+  /* ---- Focus: strong, two-tone so it shows on light AND dark fills ------ */
+  --focus-width: 3px;
+  --focus-offset: 2px;
+  --focus-ring: var(--focus-width) solid var(--color-focus);
+  --focus-halo: 0 0 0 calc(var(--focus-width) + var(--focus-offset) + 2px)
+    var(--color-focus-halo);
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --page-max: 72rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+
+  /* ---- Motion (base.css zeroes these under prefers-reduced-motion) ------ */
+  --duration-fast: 120ms;
+  --easing: ease-out;
+}

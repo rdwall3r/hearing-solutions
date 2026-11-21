@@ -1,0 +1,12 @@
+.error {
+  margin: var(--space-3xs) 0 0;
+  color: var(--color-error);
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+
+.label {
+  /* A small bar before the message as a second, non-color cue. */
+  border-left: 4px solid currentColor;
+  padding-left: var(--space-2xs);
+}

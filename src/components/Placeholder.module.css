@@ -1,0 +1,11 @@
+.placeholder {
+  border: 2px dashed var(--color-rule);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3xs) var(--space-2xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+span.placeholder {
+  display: inline-block;
+}

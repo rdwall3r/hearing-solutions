@@ -1,0 +1,82 @@
+.card {
+  /* The title comes first in the DOM (so headings lead), but the image is
+     shown first visually using grid order. */
+  display: grid;
+  gap: var(--space-2xs);
+  height: 100%;
+  padding: var(--space-sm);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.image {
+  order: -1;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-strong);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-xl);
+}
+
+/* The whole card is clickable: the title link's ::after covers the card. Text
+   stays selectable through the link, and focus shows on the whole card. */
+.card {
+  position: relative;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+}
+.link:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+.link:focus-visible::after {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+.card:hover .link {
+  text-decoration-thickness: 0.14em;
+}
+
+.brand {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.summary {
+  margin: 0;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+  align-items: baseline;
+  margin: var(--space-2xs) 0 0;
+}
+.facts dd {
+  margin: 0;
+}
+
+.price {
+  font-weight: 700;
+  font-size: var(--text-lg);
+}
+
+.tag {
+  padding: 0 var(--space-2xs);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  color: var(--color-info);
+  background: var(--color-info-bg);
+  font-size: var(--text-sm);
+}

@@ -1,0 +1,73 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  margin-bottom: var(--space-md);
+  max-width: 32rem;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.hint {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* Shared control look for <input>, <select>, <textarea>. */
+.control {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-2xs) var(--space-xs);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--paper-50);
+  color: var(--color-text);
+  line-height: var(--leading-normal);
+}
+
+.control:hover {
+  border-color: var(--color-text);
+}
+
+/* Invalid controls get a thicker border in the error color: a shape change
+   as well as a color change. */
+.invalid .control {
+  border-color: var(--color-error);
+  border-width: 3px;
+}
+
+textarea.control {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+select.control {
+  appearance: none;
+  padding-right: 2.5rem;
+  /* Chevron drawn with gradients so there is no extra image request. */
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-text) 50%),
+    linear-gradient(135deg, var(--color-text) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.15rem) 50%,
+    calc(100% - 0.8rem) 50%;
+  background-size:
+    0.35rem 0.35rem,
+    0.35rem 0.35rem;
+  background-repeat: no-repeat;
+}
+
+@media (forced-colors: active) {
+  select.control {
+    appearance: auto;
+    background-image: none;
+  }
+}

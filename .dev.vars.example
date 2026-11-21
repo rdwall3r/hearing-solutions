@@ -1,0 +1,14 @@
+# Local secrets for the Pages Function (functions/api/order.ts).
+# Copy to .dev.vars (git-ignored) when running `npx wrangler pages dev`.
+
+# Cloudflare's test secret: always passes. Use your real secret in production.
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+
+# Log emails to the console instead of sending them.
+EMAIL_DRY_RUN=true
+
+# Real sending (TODO(email): fill in for your provider)
+EMAIL_API_URL=
+EMAIL_API_KEY=
+EMAIL_TO=
+EMAIL_FROM=

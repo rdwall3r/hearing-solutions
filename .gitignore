@@ -1,0 +1,16 @@
+.DS_Store
+.env
+/node_modules/
+
+# React Router
+/.react-router/
+/build/
+
+# Storybook
+/storybook-static/
+
+# Cloudflare (local secrets and wrangler state)
+.dev.vars
+.wrangler/
+.env.*
+!.env.example

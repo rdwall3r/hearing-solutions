@@ -1,0 +1,151 @@
+/*
+ * Global base styles: a light reset, typography defaults, and the site-wide
+ * focus style. Component-specific styling lives in each *.module.css file.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* 125% of the browser default (16px → 20px). Using a percentage keeps the
+     user's own browser font-size preference in charge. */
+  font-size: 125%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-sm);
+  text-wrap: balance;
+}
+h1 {
+  font-size: var(--text-3xl);
+}
+h2 {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-xl);
+}
+h3 {
+  font-size: var(--text-xl);
+  margin-top: var(--space-lg);
+}
+h4 {
+  font-size: var(--text-lg);
+}
+
+p,
+ul,
+ol,
+dl {
+  margin: 0 0 var(--space-sm);
+  max-width: var(--measure);
+}
+
+/* Lists styled without bullets must keep list semantics: always pair this
+   class with role="list" (Safari/VoiceOver drops semantics otherwise). */
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration-thickness: 0.14em;
+}
+
+/* ---- Focus ---------------------------------------------------------------
+   One strong, consistent focus style everywhere. Outlines are never removed
+   without this replacement. The halo keeps the ring visible on dark fills.  */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  box-shadow: var(--focus-halo);
+}
+/* Elements focused by script (e.g. <main>, error summaries) still need to be
+   visible but shouldn't get the heavy halo. */
+[tabindex="-1"]:focus-visible {
+  box-shadow: none;
+}
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ---- Forms inherit the site font --------------------------------------- */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---- Utilities --------------------------------------------------------- */
+.visually-hidden:not(:focus):not(:active) {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* ---- Motion ------------------------------------------------------------
+   Animations and smooth scrolling are opt-in: they only apply when the user
+   hasn't asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Windows High Contrast / forced colors ------------------------------ */
+@media (forced-colors: active) {
+  :focus-visible {
+    outline-color: Highlight;
+  }
+}

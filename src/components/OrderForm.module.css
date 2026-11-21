@@ -1,0 +1,13 @@
+.form {
+  max-width: 36rem;
+}
+
+.turnstile {
+  /* Reserve the widget's height so the button doesn't jump when it loads. */
+  min-height: 65px;
+  margin-bottom: var(--space-md);
+}
+
+.confirmation {
+  margin-top: var(--space-md);
+}

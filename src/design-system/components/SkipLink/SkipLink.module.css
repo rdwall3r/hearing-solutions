@@ -1,0 +1,21 @@
+.skipLink {
+  position: absolute;
+  top: var(--space-2xs);
+  left: var(--space-2xs);
+  z-index: 100;
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  /* Off-screen until focused. Not display:none, which would make it
+     unfocusable. */
+  transform: translateY(-200%);
+}
+
+.skipLink:focus,
+.skipLink:focus-visible {
+  transform: none;
+  color: var(--color-on-primary);
+}

@@ -1,0 +1,124 @@
+/* Page-level layout used by route modules. Components have their own CSS. */
+
+.lede {
+  font-size: var(--text-lg);
+  max-width: var(--measure);
+}
+
+/* Product grid: one column at 320px, more as space allows. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: var(--space-md);
+  margin-block: var(--space-md) var(--space-lg);
+}
+
+.inlineList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-md);
+}
+
+/* Two clear paths on the home page: mail-order shop vs local services. */
+.paths {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+.path {
+  padding: var(--space-md);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+.path > h2 {
+  margin-top: 0;
+}
+
+/* Local services are always tinted sage so they never look like mail-order
+   products. */
+.service {
+  padding: var(--space-md);
+  border: var(--border-width) solid var(--color-service);
+  border-left-width: 8px;
+  border-radius: var(--radius-lg);
+  background: var(--color-service-bg);
+}
+.service > h2,
+.service > h3 {
+  margin-top: 0;
+  color: var(--color-service);
+}
+.service > :last-child {
+  margin-bottom: 0;
+}
+
+.serviceList {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: var(--space-sm);
+  padding: var(--space-3xs) var(--space-xs);
+  border: var(--border-width) solid currentColor;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+}
+.badgeService {
+  color: var(--color-service);
+  background: var(--color-service-bg);
+}
+
+/* Product detail */
+.productLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-lg);
+  align-items: start;
+}
+.productImage {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--color-rule);
+}
+.facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3xs) var(--space-md);
+}
+.facts dt {
+  font-weight: 700;
+}
+.facts dd {
+  margin: 0;
+}
+.price {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-2xs);
+  font-size: var(--text-sm);
+}
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: var(--space-2xs);
+  color: var(--color-text-muted);
+}
+
+.footerNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-md);
+}
+
+.spaced {
+  margin-top: var(--space-xl);
+}
