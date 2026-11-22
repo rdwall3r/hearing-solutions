@@ -17,6 +17,16 @@ html {
   text-size-adjust: 100%;
 }
 
+/* Photos are toned down a little in dark mode so they don't glare. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) img {
+    filter: brightness(0.85);
+  }
+}
+:root[data-theme="dark"] img {
+  filter: brightness(0.85);
+}
+
 body {
   margin: 0;
   background: var(--color-bg);

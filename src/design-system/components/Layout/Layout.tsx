@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router';
 import { Button } from '../Button/Button';
 import { Link } from '../Link/Link';
 import { SkipLink } from '../SkipLink/SkipLink';
+import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
 import styles from './Layout.module.css';
 
 export interface NavItem {
@@ -22,6 +23,7 @@ export interface LayoutProps {
 /**
  * The page shell: skip link, then the four landmarks in order
  * (banner/header → navigation → main → contentinfo/footer).
+ * The footer always ends with the light/dark mode toggle, bottom right.
  *
  * <main> has id="main" for the skip link and tabIndex={-1} so it can take
  * focus programmatically without joining the tab order.
@@ -92,11 +94,12 @@ export function Layout({
       <main id="main" tabIndex={-1} className={styles.main}>
         <div className={styles.inner}>{children}</div>
       </main>
-      {footer && (
-        <footer className={styles.footer}>
-          <div className={styles.inner}>{footer}</div>
-        </footer>
-      )}
+      <footer className={styles.footer}>
+        <div className={styles.inner}>
+          <div className={styles.footerContent}>{footer}</div>
+          <ThemeToggle />
+        </div>
+      </footer>
     </div>
   );
 }

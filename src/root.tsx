@@ -12,7 +12,7 @@ import {
 import type { Route } from "./+types/root";
 import "./design-system/tokens.css";
 import "./design-system/base.css";
-import { Layout as SiteLayout, Link, type NavItem } from "~/design-system";
+import { Layout as SiteLayout, Link, themeScript, type NavItem } from "~/design-system";
 import { Placeholder } from "~/components/Placeholder";
 import { SITE } from "~/lib/site";
 import site from "~/styles/site.module.css";
@@ -37,10 +37,14 @@ const NAV: NavItem[] = [
 /** The HTML document. Shared by every page, including error pages. */
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US">
+    // suppressHydrationWarning: themeScript may set data-theme on <html>
+    // before React hydrates.
+    <html lang="en-US" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Applies a saved light/dark choice before the page draws. */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Meta />
         <Links />
       </head>

@@ -168,3 +168,15 @@
   padding-block: var(--space-lg);
   font-size: var(--text-sm);
 }
+/* The theme toggle sits at the bottom right, beside the last row of footer
+   links, at every width: the content column narrows rather than pushing
+   the toggle onto its own row. */
+.footer .inner {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-sm);
+}
+.footerContent {
+  flex: 1 1 0;
+  min-width: 0;
+}

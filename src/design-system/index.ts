@@ -4,6 +4,7 @@
 export { Button, buttonClassName, type ButtonProps, type ButtonVariant, type ButtonSize } from "./components/Button/Button";
 export { Link, type LinkProps } from "./components/Link/Link";
 export { SkipLink, type SkipLinkProps } from "./components/SkipLink/SkipLink";
+export { ThemeToggle, themeScript, type Theme, type ThemeToggleProps } from "./components/ThemeToggle/ThemeToggle";
 export { Layout, type LayoutProps, type NavItem } from "./components/Layout/Layout";
 export { ProductCard, type ProductCardProps } from "./components/ProductCard/ProductCard";
 export { TextField, type TextFieldProps } from "./components/TextField/TextField";

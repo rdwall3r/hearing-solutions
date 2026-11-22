@@ -18,7 +18,6 @@
   --vellum-100: #f6eee3; /* rdwaller.net --color-vellum */
   --khaki-200: #e3e0cc; /* rdwaller.net --color-khaki */
   --taupe-500: #9c8a6e; /* only for decorative lines, never text */
-  --newsprint-300: #c8c4b8; /* rdwaller.net --color-newsprint */
 
   --walnut-900: #31241a; /* rdwaller.net --color-walnut */
   --walnut-700: #4a3a2c;
@@ -42,6 +41,27 @@
 
   --honey-100: #f8ebc9;
   --honey-700: #6e5310;
+
+  /* Dark-mode shades (rdwaller.net's dark theme, plus tints built from it) */
+  --night-950: #0f1115; /* page; same as --ink-950 */
+  --night-900: #181b22;
+  --night-800: #252932;
+  --midnight-900: #121a2e; /* rdwaller.net --color-midnight */
+  --midnight-800: #1f2a45;
+  --slate-500: #6b7184; /* decorative lines & panel edges on dark */
+  --stone-500: #85817a;
+  --stone-400: #a39f94;
+  --newsprint-300: #c8c4b8; /* rdwaller.net --color-newsprint */
+  --cornflower-300: #8fb0ff; /* rdwaller.net --color-cornflower */
+  --cornflower-200: #b3c9ff;
+  --apricot-300: #e0a48f; /* rdwaller.net --color-apricot */
+  --apricot-200: #ecbfae;
+  --coral-300: #ff9f8f;
+  --gold-300: #e8c66a;
+  --maroon-950: #2c1515;
+  --spruce-950: #10261f;
+  --sapphire-950: #16213d;
+  --honey-950: #2b2410;
 
   /* ---- Semantic color roles (use these in components) ------------------- */
   --color-bg: var(--vellum-100);
@@ -140,4 +160,115 @@
   /* ---- Motion (base.css zeroes these under prefers-reduced-motion) ------ */
   --duration-fast: 120ms;
   --easing: ease-out;
+}
+
+/* ---- Dark mode -------------------------------------------------------------
+ * Same behavior as rdwaller.net: follow the device setting, unless the
+ * visitor has picked a theme with the footer toggle, which sets
+ * <html data-theme="light|dark">.
+ *
+ * CSS can't share one block between a media query and a selector, so the two
+ * blocks below must stay identical. `npm run check:contrast` checks every
+ * pairing in both themes and fails if the blocks drift apart.
+ */
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg: var(--night-950);
+    --color-surface: var(--night-900);
+    --color-surface-strong: var(--night-800);
+    --color-field-bg: var(--night-900);
+    --color-text: var(--newsprint-300);
+    --color-text-muted: var(--stone-400);
+    --color-border: var(--stone-500);
+    --color-rule: var(--slate-500);
+
+    --color-link: var(--cornflower-300);
+    --color-link-hover: var(--seafoam-400);
+
+    --color-primary: var(--cornflower-300);
+    --color-primary-hover: var(--cornflower-200);
+    --color-on-primary: var(--night-950);
+
+    --color-accent: var(--apricot-300);
+    --color-accent-hover: var(--apricot-200);
+    --color-on-accent: var(--night-950);
+
+    --color-focus: var(--cornflower-200);
+    --color-focus-halo: var(--night-950);
+
+    --color-error: var(--coral-300);
+    --color-error-bg: var(--maroon-950);
+    --color-success: var(--seafoam-400);
+    --color-success-bg: var(--spruce-950);
+    --color-info: var(--cornflower-300);
+    --color-info-bg: var(--sapphire-950);
+    --color-warning: var(--gold-300);
+    --color-warning-bg: var(--honey-950);
+
+    --color-service: var(--seafoam-400);
+    --color-service-bg: var(--spruce-950);
+
+    /* Header & footer: midnight, as rdwaller.net's dark frame */
+    --color-inverse-bg: var(--midnight-900);
+    --color-inverse-bg-hover: var(--midnight-800);
+    --color-inverse-text: var(--newsprint-300);
+    --color-inverse-text-muted: var(--stone-400);
+    --color-inverse-link: var(--newsprint-300);
+    --color-inverse-link-hover: var(--seafoam-400);
+    --color-inverse-rule: var(--slate-500);
+    --color-inverse-focus: var(--newsprint-300);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: var(--night-950);
+  --color-surface: var(--night-900);
+  --color-surface-strong: var(--night-800);
+  --color-field-bg: var(--night-900);
+  --color-text: var(--newsprint-300);
+  --color-text-muted: var(--stone-400);
+  --color-border: var(--stone-500);
+  --color-rule: var(--slate-500);
+
+  --color-link: var(--cornflower-300);
+  --color-link-hover: var(--seafoam-400);
+
+  --color-primary: var(--cornflower-300);
+  --color-primary-hover: var(--cornflower-200);
+  --color-on-primary: var(--night-950);
+
+  --color-accent: var(--apricot-300);
+  --color-accent-hover: var(--apricot-200);
+  --color-on-accent: var(--night-950);
+
+  --color-focus: var(--cornflower-200);
+  --color-focus-halo: var(--night-950);
+
+  --color-error: var(--coral-300);
+  --color-error-bg: var(--maroon-950);
+  --color-success: var(--seafoam-400);
+  --color-success-bg: var(--spruce-950);
+  --color-info: var(--cornflower-300);
+  --color-info-bg: var(--sapphire-950);
+  --color-warning: var(--gold-300);
+  --color-warning-bg: var(--honey-950);
+
+  --color-service: var(--seafoam-400);
+  --color-service-bg: var(--spruce-950);
+
+  /* Header & footer: midnight, as rdwaller.net's dark frame */
+  --color-inverse-bg: var(--midnight-900);
+  --color-inverse-bg-hover: var(--midnight-800);
+  --color-inverse-text: var(--newsprint-300);
+  --color-inverse-text-muted: var(--stone-400);
+  --color-inverse-link: var(--newsprint-300);
+  --color-inverse-link-hover: var(--seafoam-400);
+  --color-inverse-rule: var(--slate-500);
+  --color-inverse-focus: var(--newsprint-300);
 }

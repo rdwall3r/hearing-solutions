@@ -12,11 +12,41 @@ const tokensPath = fileURLToPath(
 );
 const css = readFileSync(tokensPath, "utf8");
 
-// Resolve --name: #hex and --name: var(--other) declarations.
-const raw = new Map();
-for (const [, name, value] of css.matchAll(/(--[\w-]+):\s*([^;]+);/g)) {
-  raw.set(name, value.trim());
+// Both themes are checked. Light: every declaration outside the dark-mode
+// section. Dark: light, overridden by the :root[data-theme="dark"] block.
+// The prefers-color-scheme copy of that block must match it exactly.
+function declarations(text) {
+  const map = new Map();
+  for (const [, name, value] of text.matchAll(/(--[\w-]+):\s*([^;]+);/g)) {
+    map.set(name, value.trim());
+  }
+  return map;
 }
+function block(text, opener) {
+  const start = text.indexOf(opener);
+  if (start === -1) throw new Error(`tokens.css: missing ${opener}`);
+  const end = text.indexOf("}", start);
+  return text.slice(start + opener.length, end);
+}
+const darkStart = css.indexOf("/* ---- Dark mode");
+if (darkStart === -1) throw new Error("tokens.css: missing Dark mode section");
+const darkCss = css.slice(darkStart);
+const darkAttr = declarations(block(darkCss, ':root[data-theme="dark"] {'));
+const darkMedia = declarations(block(darkCss, ':root:not([data-theme="light"]) {'));
+const drift = [...new Set([...darkAttr.keys(), ...darkMedia.keys()])].filter(
+  (k) => darkAttr.get(k) !== darkMedia.get(k),
+);
+if (drift.length) {
+  console.log(`FAIL  the two dark-mode blocks differ: ${drift.join(", ")}`);
+  process.exit(1);
+}
+
+const themes = {
+  light: declarations(css.slice(0, darkStart)),
+};
+themes.dark = new Map([...themes.light, ...darkAttr]);
+
+let raw;
 function resolve(name, seen = new Set()) {
   if (seen.has(name)) throw new Error(`Circular token: ${name}`);
   seen.add(name);
@@ -90,17 +120,25 @@ const pairs = [
   ["--color-inverse-text", "--color-inverse-bg", UI, "Menu button edge"],
   ["--color-inverse-focus", "--color-inverse-bg", UI, "focus ring in header/footer"],
   ["--color-inverse-focus", "--color-inverse-bg-hover", UI, "focus ring on hovered Menu button"],
-  ["--color-inverse-bg", "--color-bg", UI, "dropdown panel vs page"],
+  // Either the panel's fill or its edge must stand out from the page
+  // (light: the walnut fill does; dark: midnight is too close, the edge does).
+  ["--color-inverse-bg|--color-inverse-rule", "--color-bg", UI, "dropdown panel vs page"],
 ];
 
 let failures = 0;
-for (const [fg, bg, min, use] of pairs) {
-  const ratio = contrast(resolve(fg), resolve(bg));
-  const ok = ratio >= min;
-  if (!ok) failures++;
-  console.log(
-    `${ok ? "pass" : "FAIL"}  ${ratio.toFixed(2).padStart(5)}:1 (needs ${min})  ${fg} on ${bg}  — ${use}`,
-  );
+for (const [theme, values] of Object.entries(themes)) {
+  raw = values;
+  console.log(`\n${theme} theme`);
+  for (const [fg, bg, min, use] of pairs) {
+    const ratio = Math.max(
+      ...fg.split("|").map((name) => contrast(resolve(name), resolve(bg))),
+    );
+    const ok = ratio >= min;
+    if (!ok) failures++;
+    console.log(
+      `${ok ? "pass" : "FAIL"}  ${ratio.toFixed(2).padStart(5)}:1 (needs ${min})  ${fg} on ${bg}  — ${use}`,
+    );
+  }
 }
 console.log(failures ? `\n${failures} pairing(s) fail.` : "\nAll pairings pass.");
 process.exit(failures ? 1 : 0);
