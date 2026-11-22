@@ -28,7 +28,7 @@
   padding: var(--space-2xs) var(--space-xs);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-sm);
-  background: var(--paper-50);
+  background: var(--color-field-bg);
   color: var(--color-text);
   line-height: var(--leading-normal);
 }

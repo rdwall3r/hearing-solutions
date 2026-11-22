@@ -10,66 +10,87 @@
  */
 
 :root {
-  /* ---- Raw palette: paper, denim, rust, sage ---------------------------- */
-  --paper-50: #fdfaf3;
-  --paper-100: #f8f1e3;
-  --paper-200: #efe3cb;
-  --paper-400: #9c8a6e; /* only for decorative lines, never text */
+  /* ---- Raw palette ------------------------------------------------------
+     Loosely follows rdwaller.net: vellum paper, ink-black text, sapphire
+     links, spruce hovers, a walnut frame, with clay and maroon as warm
+     accents. Some shades are darkened from the originals to meet contrast. */
+  --vellum-50: #fbf7f0;
+  --vellum-100: #f6eee3; /* rdwaller.net --color-vellum */
+  --khaki-200: #e3e0cc; /* rdwaller.net --color-khaki */
+  --taupe-500: #9c8a6e; /* only for decorative lines, never text */
+  --newsprint-300: #c8c4b8; /* rdwaller.net --color-newsprint */
 
-  --ink-900: #2b2622;
-  --ink-700: #574b41;
+  --walnut-900: #31241a; /* rdwaller.net --color-walnut */
+  --walnut-700: #4a3a2c;
+  --walnut-600: #5a4a3c;
 
-  --denim-100: #e3eaf2;
-  --denim-600: #345678;
-  --denim-700: #2a4763;
-  --denim-800: #1e3349;
+  --ink-950: #0f1115; /* rdwaller.net --color-ink-black */
 
-  --rust-100: #f7e4da;
-  --rust-600: #a3471f;
-  --rust-700: #8a3a18;
+  --sapphire-100: #e4e9f6;
+  --sapphire-600: #2d57cb; /* rdwaller.net --color-sapphire */
+  --sapphire-800: #1b3a8c; /* rdwaller.net --color-ink-blue */
 
-  --sage-100: #e4ebdd;
-  --sage-600: #4f6847;
-  --sage-700: #3f5439;
+  --spruce-100: #e3ebe2;
+  --spruce-700: #3f685b; /* rdwaller.net --color-spruce */
+  --seafoam-400: #6cc4b0; /* rdwaller.net --color-seafoam */
+
+  --clay-600: #8e5644; /* rdwaller.net --color-clay, darkened for text on it */
+  --clay-700: #74422f;
+
+  --maroon-100: #f6e1d8;
+  --maroon-800: #800000; /* rdwaller.net --color-maroon */
 
   --honey-100: #f8ebc9;
   --honey-700: #6e5310;
 
   /* ---- Semantic color roles (use these in components) ------------------- */
-  --color-bg: var(--paper-50);
-  --color-surface: var(--paper-100);
-  --color-surface-strong: var(--paper-200);
-  --color-text: var(--ink-900);
-  --color-text-muted: var(--ink-700);
-  --color-border: var(--ink-700); /* form control & card edges: 3:1+ */
-  --color-rule: var(--paper-400); /* decorative dividers */
+  --color-bg: var(--vellum-100);
+  --color-surface: var(--vellum-50);
+  --color-surface-strong: var(--khaki-200);
+  --color-field-bg: var(--vellum-50);
+  --color-text: var(--ink-950);
+  --color-text-muted: var(--walnut-600);
+  --color-border: var(--walnut-600); /* form control & card edges: 3:1+ */
+  --color-rule: var(--taupe-500); /* decorative dividers */
 
-  --color-link: var(--denim-700);
-  --color-link-hover: var(--denim-800);
+  --color-link: var(--sapphire-600);
+  --color-link-hover: var(--spruce-700);
 
-  --color-primary: var(--denim-700);
-  --color-primary-hover: var(--denim-800);
-  --color-on-primary: var(--paper-50);
+  --color-primary: var(--sapphire-600);
+  --color-primary-hover: var(--sapphire-800);
+  --color-on-primary: var(--vellum-50);
 
-  --color-accent: var(--rust-600);
-  --color-accent-hover: var(--rust-700);
-  --color-on-accent: var(--paper-50);
+  --color-accent: var(--clay-600);
+  --color-accent-hover: var(--clay-700);
+  --color-on-accent: var(--vellum-50);
 
-  --color-focus: var(--denim-800);
-  --color-focus-halo: var(--paper-50);
+  --color-focus: var(--sapphire-800);
+  --color-focus-halo: var(--vellum-50);
 
-  --color-error: var(--rust-700);
-  --color-error-bg: var(--rust-100);
-  --color-success: var(--sage-700);
-  --color-success-bg: var(--sage-100);
-  --color-info: var(--denim-700);
-  --color-info-bg: var(--denim-100);
+  --color-error: var(--maroon-800);
+  --color-error-bg: var(--maroon-100);
+  --color-success: var(--spruce-700);
+  --color-success-bg: var(--spruce-100);
+  --color-info: var(--sapphire-600);
+  --color-info-bg: var(--sapphire-100);
   --color-warning: var(--honey-700);
   --color-warning-bg: var(--honey-100);
 
   /* Local services get their own tint so they read as separate from shop */
-  --color-service: var(--sage-700);
-  --color-service-bg: var(--sage-100);
+  --color-service: var(--spruce-700);
+  --color-service-bg: var(--spruce-100);
+
+  /* Inverse: light-on-walnut, for the header and footer. Layout remaps the
+     regular roles to these inside those regions, so components need no
+     dark variants of their own. Echoes rdwaller.net's dark-mode colors. */
+  --color-inverse-bg: var(--walnut-900);
+  --color-inverse-bg-hover: var(--walnut-700);
+  --color-inverse-text: var(--vellum-100);
+  --color-inverse-text-muted: var(--newsprint-300);
+  --color-inverse-link: var(--vellum-100); /* same as the site name */
+  --color-inverse-link-hover: var(--seafoam-400);
+  --color-inverse-rule: var(--taupe-500); /* decorative lines & panel edges */
+  --color-inverse-focus: var(--vellum-100);
 
   /* ---- Typography ------------------------------------------------------- */
   --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI",

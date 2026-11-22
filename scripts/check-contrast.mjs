@@ -54,6 +54,8 @@ const pairs = [
   ["--color-link", "--color-bg", TEXT, "links"],
   ["--color-link", "--color-surface", TEXT, "links on cards"],
   ["--color-link-hover", "--color-bg", TEXT, "hovered links"],
+  ["--color-link-hover", "--color-surface", TEXT, "hovered links on cards"],
+  ["--color-link", "--color-surface-strong", TEXT, "links on strong surface"],
   ["--color-on-primary", "--color-primary", TEXT, "primary button"],
   ["--color-on-primary", "--color-primary-hover", TEXT, "primary button hover"],
   ["--color-on-accent", "--color-accent", TEXT, "accent button"],
@@ -61,6 +63,8 @@ const pairs = [
   ["--color-primary", "--color-bg", UI, "button edge vs page"],
   ["--color-border", "--color-bg", UI, "form control border"],
   ["--color-border", "--color-surface", UI, "card border"],
+  ["--color-border", "--color-field-bg", UI, "form control border on its fill"],
+  ["--color-text", "--color-field-bg", TEXT, "text typed in form controls"],
   ["--color-focus", "--color-bg", UI, "focus ring"],
   ["--color-focus", "--color-surface", UI, "focus ring on cards"],
   ["--color-focus", "--color-error-bg", UI, "focus ring in error notice"],
@@ -77,6 +81,16 @@ const pairs = [
   ["--color-service", "--color-service-bg", TEXT, "services heading"],
   ["--color-text", "--color-service-bg", TEXT, "services body text"],
   ["--color-link", "--color-service-bg", TEXT, "links on services panels"],
+  // Walnut header & footer (Layout remaps the roles to these)
+  ["--color-inverse-text", "--color-inverse-bg", TEXT, "header/footer text"],
+  ["--color-inverse-text-muted", "--color-inverse-bg", TEXT, "byline, footer placeholder"],
+  ["--color-inverse-link", "--color-inverse-bg", TEXT, "header/footer links"],
+  ["--color-inverse-link-hover", "--color-inverse-bg", TEXT, "hovered header/footer links"],
+  ["--color-inverse-text", "--color-inverse-bg-hover", TEXT, "Menu button hover"],
+  ["--color-inverse-text", "--color-inverse-bg", UI, "Menu button edge"],
+  ["--color-inverse-focus", "--color-inverse-bg", UI, "focus ring in header/footer"],
+  ["--color-inverse-focus", "--color-inverse-bg-hover", UI, "focus ring on hovered Menu button"],
+  ["--color-inverse-bg", "--color-bg", UI, "dropdown panel vs page"],
 ];
 
 let failures = 0;

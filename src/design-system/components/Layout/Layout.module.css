@@ -12,11 +12,31 @@
   padding-inline: var(--gutter);
 }
 
-/* ---- Header ------------------------------------------------------------ */
-.header {
-  border-bottom: var(--border-width) solid var(--color-rule);
-  background: var(--color-surface);
+/* ---- Walnut header & footer ---------------------------------------------
+   Both regions remap the regular color roles to their inverse (light on
+   walnut) values, so everything inside — links, the Menu button, focus
+   rings, the dropdown, placeholders — adapts without special cases. */
+.header,
+.footer {
+  --color-surface: var(--color-inverse-bg);
+  --color-text: var(--color-inverse-text);
+  --color-text-muted: var(--color-inverse-text-muted);
+  --color-link: var(--color-inverse-link);
+  --color-link-hover: var(--color-inverse-link-hover);
+  --color-rule: var(--color-inverse-rule);
+  --color-border: var(--color-inverse-rule);
+  /* Secondary (outline) button, i.e. the Menu button */
+  --color-primary: var(--color-inverse-text);
+  --color-primary-hover: var(--color-inverse-text);
+  --color-info-bg: var(--color-inverse-bg-hover);
+  --color-focus: var(--color-inverse-focus);
+  --color-focus-halo: var(--color-inverse-bg);
+
+  background: var(--color-inverse-bg);
+  color: var(--color-text);
 }
+
+/* ---- Header ------------------------------------------------------------ */
 .header .inner {
   display: flex;
   flex-wrap: wrap; /* nav drops below the name on narrow screens and zoom */
@@ -145,8 +165,6 @@
 }
 
 .footer {
-  border-top: var(--border-width) solid var(--color-rule);
-  background: var(--color-surface);
   padding-block: var(--space-lg);
   font-size: var(--text-sm);
 }
