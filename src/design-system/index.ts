@@ -12,4 +12,4 @@ export { Textarea, type TextareaProps } from "./components/Textarea/Textarea";
 export { RadioGroup, type RadioGroupProps, type RadioOption } from "./components/RadioGroup/RadioGroup";
 export { FieldError, type FieldErrorProps } from "./components/FieldError/FieldError";
 export { Notice, type NoticeProps, type NoticeTone } from "./components/Notice/Notice";
-export { cx, formatPrice } from "./utils";
+export { formatPrice } from "./utils";

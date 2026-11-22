@@ -1,5 +1,5 @@
 import type { ComponentPropsWithRef } from "react";
-import { cx } from "../../utils";
+import { clsx } from "clsx";
 import styles from "./Notice.module.css";
 
 export type NoticeTone = "info" | "success" | "warning" | "error";
@@ -36,7 +36,7 @@ export function Notice({
 }: NoticeProps) {
   const Heading = `h${headingLevel}` as const;
   return (
-    <div className={cx(styles.notice, styles[tone], className)} {...rest}>
+    <div className={clsx(styles.notice, styles[tone], className)} {...rest}>
       {title ? (
         <Heading className={styles.title}>
           <span className="visually-hidden">{TONE_LABEL[tone]}: </span>

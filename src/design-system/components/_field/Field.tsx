@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { cx } from "../../utils";
+import { clsx } from "clsx";
 import { FieldError } from "../FieldError/FieldError";
 import styles from "./Field.module.css";
 
@@ -42,10 +42,10 @@ export function Field({
   const id = idProp ?? generated;
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = error ? `${id}-error` : undefined;
-  const describedBy = cx(hintId, errorId) || undefined;
+  const describedBy = clsx(hintId, errorId) || undefined;
 
   return (
-    <div className={cx(styles.field, error ? styles.invalid : undefined, className)}>
+    <div className={clsx(styles.field, { [styles.invalid]: !!error }, className)}>
       <label className={styles.label} htmlFor={id}>
         {label}
         {optional && <span className={styles.optional}> (optional)</span>}

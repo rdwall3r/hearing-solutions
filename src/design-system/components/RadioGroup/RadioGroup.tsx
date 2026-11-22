@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { cx } from "../../utils";
+import { clsx } from "clsx";
 import { FieldError } from "../FieldError/FieldError";
 import styles from "./RadioGroup.module.css";
 
@@ -50,8 +50,8 @@ export function RadioGroup({
 
   return (
     <fieldset
-      className={cx(styles.group, error ? styles.invalid : undefined)}
-      aria-describedby={cx(hintId, errorId) || undefined}
+      className={clsx(styles.group, { [styles.invalid]: !!error })}
+      aria-describedby={clsx(hintId, errorId) || undefined}
     >
       <legend className={styles.legend}>
         {legend}
@@ -63,7 +63,7 @@ export function RadioGroup({
         </p>
       )}
       {error && <FieldError id={errorId!}>{error}</FieldError>}
-      <div className={cx(styles.options, inline ? styles.inline : undefined)}>
+      <div className={clsx(styles.options, { [styles.inline]: inline })}>
         {options.map((option, index) => {
           const optionId = index === 0 ? id : `${id}-${option.value}`;
           return (

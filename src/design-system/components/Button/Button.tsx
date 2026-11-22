@@ -1,11 +1,11 @@
 import type { ComponentPropsWithRef } from "react";
-import { cx } from "../../utils";
+import { clsx } from "clsx";
 import styles from "./Button.module.css";
 
 export type ButtonVariant = "primary" | "secondary" | "accent";
 
 export function buttonClassName(variant: ButtonVariant = "primary") {
-  return cx(styles.button, styles[variant]);
+  return clsx(styles.button, styles[variant]);
 }
 
 export interface ButtonProps extends ComponentPropsWithRef<"button"> {
@@ -25,7 +25,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={cx(buttonClassName(variant), className)}
+      className={clsx(buttonClassName(variant), className)}
       {...rest}
     />
   );

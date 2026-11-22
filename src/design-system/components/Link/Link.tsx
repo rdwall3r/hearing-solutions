@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef } from "react";
 import { Link as RouterLink, type LinkProps as RouterLinkProps } from "react-router";
-import { cx } from "../../utils";
+import { clsx } from "clsx";
 import { buttonClassName } from "../Button/Button";
 
 type Variant = "inline" | "button" | "button-secondary";
@@ -27,7 +27,7 @@ export type LinkProps = InternalProps | ExternalProps;
  */
 export function Link(props: LinkProps) {
   const { variant = "inline", className, ...rest } = props;
-  const classes = cx(variantClass(variant), className as string | undefined);
+  const classes = clsx(variantClass(variant), className as string | undefined);
 
   if ("href" in rest && rest.href !== undefined) {
     return <a className={classes || undefined} {...(rest as ComponentPropsWithRef<"a">)} />;
