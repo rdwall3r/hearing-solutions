@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" role="img" aria-label="Placeholder image">
   <rect width="480" height="360" fill="#efe3cb"/>
   <rect x="16" y="16" width="448" height="328" fill="none" stroke="#9c8a6e" stroke-width="3" stroke-dasharray="12 10" rx="10"/>
-  <text x="240" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#574b41">Photo coming soon</text>
+  <text x="240" y="188" text-anchor="middle" font-family="'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="28" fill="#574b41">Photo coming soon</text>
 </svg>
