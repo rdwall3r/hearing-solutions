@@ -41,7 +41,11 @@ export function Layout({
   return (
     <div className={styles.page}>
       <SkipLink targetId="main" />
-      <header className={styles.header} data-menu={menu.state}>
+      <header
+        ref={menu.headerRef}
+        className={styles.header}
+        data-menu={menu.state}
+      >
         <div className={styles.inner}>
           <div className={styles.brand}>
             <Link to="/" className={styles.siteName}>
@@ -49,36 +53,40 @@ export function Layout({
             </Link>
             {byline && <p className={styles.byline}>{byline}</p>}
           </div>
-          {menu.state && (
-            <Button
-              ref={menu.buttonRef}
-              variant="secondary"
-              size="small"
-              className={styles.menuButton}
-              aria-expanded={menu.state === 'open'}
-              aria-controls={menu.navId}
-              onClick={menu.toggle}
-            >
-              <MenuIcon open={menu.state === 'open'} />
-              Menu
-            </Button>
-          )}
-          <nav id={menu.navId} aria-label="Main" className={styles.nav}>
-            <ul role="list" className={`list-reset ${styles.navList}`}>
-              {nav.map((item) => (
-                <li key={item.to}>
-                  {/* NavLink sets aria-current="page" on the active link. */}
-                  <NavLink
-                    to={item.to}
-                    className={styles.navLink}
-                    end={item.to === '/'}
-                  >
-                    {item.label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Wraps the button and nav so the open dropdown can be positioned
+              against the button. */}
+          <div className={styles.menu}>
+            {menu.state && (
+              <Button
+                ref={menu.buttonRef}
+                variant="secondary"
+                size="small"
+                className={styles.menuButton}
+                aria-expanded={menu.state === 'open'}
+                aria-controls={menu.navId}
+                onClick={menu.toggle}
+              >
+                <MenuIcon open={menu.state === 'open'} />
+                Menu
+              </Button>
+            )}
+            <nav id={menu.navId} aria-label="Main" className={styles.nav}>
+              <ul role="list" className={`list-reset ${styles.navList}`}>
+                {nav.map((item) => (
+                  <li key={item.to}>
+                    {/* NavLink sets aria-current="page" on the active link. */}
+                    <NavLink
+                      to={item.to}
+                      className={styles.navLink}
+                      end={item.to === '/'}
+                    >
+                      {item.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
       </header>
       <main id="main" tabIndex={-1} className={styles.main}>
@@ -96,11 +104,13 @@ export function Layout({
 /**
  * State for the small-screen menu. `state` is undefined until after
  * hydration, so server-rendered and no-JS pages always show the full nav.
- * Closes on navigation, and on Escape (returning focus to the button).
+ * Closes on navigation, on Escape (returning focus to the button), and when
+ * the user clicks, taps or tabs anywhere outside the header.
  */
 function useMenuDisclosure() {
   const [state, setState] = useState<'open' | 'closed'>();
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const navId = useId();
   const { pathname } = useLocation();
 
@@ -113,13 +123,24 @@ function useMenuDisclosure() {
       setState('closed');
       buttonRef.current?.focus();
     }
+    function onOutside(event: Event) {
+      if (!headerRef.current?.contains(event.target as Node))
+        setState('closed');
+    }
     document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
+    document.addEventListener('pointerdown', onOutside);
+    document.addEventListener('focusin', onOutside);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('pointerdown', onOutside);
+      document.removeEventListener('focusin', onOutside);
+    };
   }, [state]);
 
   return {
     state,
     buttonRef,
+    headerRef,
     navId,
     toggle: () => setState((s) => (s === 'open' ? 'closed' : 'open')),
   };
