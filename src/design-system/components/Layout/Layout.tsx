@@ -64,12 +64,13 @@ export function Layout({
                 variant="secondary"
                 size="small"
                 className={styles.menuButton}
+                aria-label="Menu"
+                title="Menu"
                 aria-expanded={menu.state === 'open'}
                 aria-controls={menu.navId}
                 onClick={menu.toggle}
               >
                 <MenuIcon open={menu.state === 'open'} />
-                Menu
               </Button>
             )}
             <nav id={menu.navId} aria-label="Main" className={styles.nav}>
@@ -149,7 +150,8 @@ function useMenuDisclosure() {
   };
 }
 
-/** Three bars, or an X when the menu is open. Decorative: the button says "Menu". */
+/** Three bars, or an X when the menu is open. Decorative: the button's
+    aria-label names it "Menu", and aria-expanded says whether it's open. */
 function MenuIcon({ open }: { open: boolean }) {
   return (
     <svg

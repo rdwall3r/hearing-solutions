@@ -107,8 +107,8 @@
   display: none;
 }
 .menuIcon {
-  width: 1.1em;
-  height: 1.1em;
+  width: 1.4em;
+  height: 1.4em;
 }
 
 @media (max-width: 47.99em) {
@@ -127,8 +127,11 @@
     flex: none;
     align-self: flex-start;
   }
+  /* Icon-only: a square the same height as the small button (44px). */
   .header[data-menu] .menuButton {
     display: inline-flex;
+    width: 2.2rem;
+    padding: 0;
   }
   /* The open menu is a dropdown panel hanging from the button's bottom
      right corner, laid over the page rather than pushing it down. */
