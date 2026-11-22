@@ -89,7 +89,7 @@ function Shell({ children }: { children: React.ReactNode }) {
   return (
     <SiteLayout
       siteName={SITE.name}
-      byline={`${SITE.owner} · ${SITE.location}`}
+      byline={SITE.tagline}
       nav={NAV}
       footer={<SiteFooter />}
     >
