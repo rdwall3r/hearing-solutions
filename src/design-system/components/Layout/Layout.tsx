@@ -1,7 +1,9 @@
-import { NavLink } from "react-router";
-import { Link } from "../Link/Link";
-import { SkipLink } from "../SkipLink/SkipLink";
-import styles from "./Layout.module.css";
+import { useEffect, useId, useRef, useState } from 'react';
+import { NavLink, useLocation } from 'react-router';
+import { Button } from '../Button/Button';
+import { Link } from '../Link/Link';
+import { SkipLink } from '../SkipLink/SkipLink';
+import styles from './Layout.module.css';
 
 export interface NavItem {
   to: string;
@@ -23,12 +25,23 @@ export interface LayoutProps {
  *
  * <main> has id="main" for the skip link and tabIndex={-1} so it can take
  * focus programmatically without joining the tab order.
+ *
+ * On narrow screens (and at high zoom) the nav collapses behind a "Menu"
+ * disclosure button. That only happens once JavaScript has run: without it,
+ * the links are always shown and wrap below the site name.
  */
-export function Layout({ siteName, byline, nav, footer, children }: LayoutProps) {
+export function Layout({
+  siteName,
+  byline,
+  nav,
+  footer,
+  children,
+}: LayoutProps) {
+  const menu = useMenuDisclosure();
   return (
     <div className={styles.page}>
       <SkipLink targetId="main" />
-      <header className={styles.header}>
+      <header className={styles.header} data-menu={menu.state}>
         <div className={styles.inner}>
           <div className={styles.brand}>
             <Link to="/" className={styles.siteName}>
@@ -36,12 +49,30 @@ export function Layout({ siteName, byline, nav, footer, children }: LayoutProps)
             </Link>
             {byline && <p className={styles.byline}>{byline}</p>}
           </div>
-          <nav aria-label="Main" className={styles.nav}>
+          {menu.state && (
+            <Button
+              ref={menu.buttonRef}
+              variant="secondary"
+              size="small"
+              className={styles.menuButton}
+              aria-expanded={menu.state === 'open'}
+              aria-controls={menu.navId}
+              onClick={menu.toggle}
+            >
+              <MenuIcon open={menu.state === 'open'} />
+              Menu
+            </Button>
+          )}
+          <nav id={menu.navId} aria-label="Main" className={styles.nav}>
             <ul role="list" className={`list-reset ${styles.navList}`}>
               {nav.map((item) => (
                 <li key={item.to}>
                   {/* NavLink sets aria-current="page" on the active link. */}
-                  <NavLink to={item.to} className={styles.navLink} end={item.to === "/"}>
+                  <NavLink
+                    to={item.to}
+                    className={styles.navLink}
+                    end={item.to === '/'}
+                  >
                     {item.label}
                   </NavLink>
                 </li>
@@ -59,5 +90,61 @@ export function Layout({ siteName, byline, nav, footer, children }: LayoutProps)
         </footer>
       )}
     </div>
+  );
+}
+
+/**
+ * State for the small-screen menu. `state` is undefined until after
+ * hydration, so server-rendered and no-JS pages always show the full nav.
+ * Closes on navigation, and on Escape (returning focus to the button).
+ */
+function useMenuDisclosure() {
+  const [state, setState] = useState<'open' | 'closed'>();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const navId = useId();
+  const { pathname } = useLocation();
+
+  useEffect(() => setState('closed'), [pathname]);
+
+  useEffect(() => {
+    if (state !== 'open') return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+      setState('closed');
+      buttonRef.current?.focus();
+    }
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [state]);
+
+  return {
+    state,
+    buttonRef,
+    navId,
+    toggle: () => setState((s) => (s === 'open' ? 'closed' : 'open')),
+  };
+}
+
+/** Three bars, or an X when the menu is open. Decorative: the button says "Menu". */
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      className={styles.menuIcon}
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      aria-hidden="true"
+      focusable="false"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+    >
+      {open ? (
+        <path d="M6 6l12 12M18 6L6 18" />
+      ) : (
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      )}
+    </svg>
   );
 }

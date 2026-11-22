@@ -4,12 +4,20 @@ import styles from "./Button.module.css";
 
 export type ButtonVariant = "primary" | "secondary" | "accent";
 
-export function buttonClassName(variant: ButtonVariant = "primary") {
-  return clsx(styles.button, styles[variant]);
+/** "small" is for compact spots like the header menu button. It still meets
+    the 44px touch-target size. */
+export type ButtonSize = "default" | "small";
+
+export function buttonClassName(
+  variant: ButtonVariant = "primary",
+  size: ButtonSize = "default",
+) {
+  return clsx(styles.button, styles[variant], size === "small" && styles.small);
 }
 
 export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   variant?: ButtonVariant;
+  size?: ButtonSize;
 }
 
 /**
@@ -18,6 +26,7 @@ export interface ButtonProps extends ComponentPropsWithRef<"button"> {
  */
 export function Button({
   variant = "primary",
+  size = "default",
   type = "button",
   className,
   ...rest
@@ -25,7 +34,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={clsx(buttonClassName(variant), className)}
+      className={clsx(buttonClassName(variant, size), className)}
       {...rest}
     />
   );

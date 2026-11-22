@@ -30,3 +30,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 export const FocusOnNavLink: Story = { play: focusOn('nav a[href="/services"]') };
 export const FocusOnSkipLink: Story = { play: focusOn('a[href="#main"]') };
+
+/** Narrow viewport: the nav collapses behind the "Menu" button. */
+export const SmallScreen: Story = {
+  globals: { viewport: { value: "mobile1", isRotated: false } },
+};
+export const SmallScreenMenuOpen: Story = {
+  globals: { viewport: { value: "mobile1", isRotated: false } },
+  play: async ({ canvasElement }) => {
+    canvasElement.querySelector<HTMLButtonElement>("button[aria-expanded]")?.click();
+  },
+};
