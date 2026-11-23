@@ -18,7 +18,13 @@ import { SITE } from "~/lib/site";
 import site from "~/styles/site.module.css";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "icon", href: "/favicon.ico" },
+  // Favicons: browsers that support SVG use favicon.svg, which switches
+  // between light and dark versions; others fall back to favicon.ico.
+  // sizes="32x32" stops Chrome from choosing the .ico over the SVG.
+  { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
+  { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+  // Home-screen icon for iPhone and iPad.
+  { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {

@@ -150,6 +150,15 @@ The target is WCAG 2.2 AA. Built in:
 Before launch, test manually: keyboard only, a screen reader (VoiceOver), 200%
 and 400% zoom, and a 320px-wide window.
 
+## Credits
+
+- **Favicon**: the ear icon is "ear-listen" from
+  [Font Awesome Free](https://fontawesome.com) 7.3.1 by Fonticons, Inc.,
+  used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/),
+  placed on a rounded tile and recolored. `public/favicon.svg` is the source;
+  `favicon.ico` (16, 32, 48px) and `apple-touch-icon.png` (180px) are
+  rendered from it using the light-mode colors.
+
 ## Known limitations
 
 - **Order form without JavaScript**: the form posts normally, but Turnstile
