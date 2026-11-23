@@ -1,5 +1,5 @@
 import type { Route } from "./+types/services";
-import { Link } from "~/design-system";
+import { Link, Subheading } from "~/design-system";
 import { Placeholder } from "~/components/Placeholder";
 import { LOCAL_SERVICE_VALUE } from "~/lib/order";
 import { pageMeta, SITE } from "~/lib/site";
@@ -21,9 +21,9 @@ export default function Services() {
   return (
     <>
       <h1>Local services</h1>
-      <p className={`${site.badge} ${site.badgeService}`}>
+      <Subheading>
         In person, by appointment, in {SITE.location}. Not mail order.
-      </p>
+      </Subheading>
       <Placeholder>
         intro to local services: where, when, and how appointments work.
       </Placeholder>

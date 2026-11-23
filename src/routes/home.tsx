@@ -1,5 +1,5 @@
 import type { Route } from './+types/home';
-import { Link } from '~/design-system';
+import { Link, Subheading } from '~/design-system';
 import { Placeholder } from '~/components/Placeholder';
 import { CATEGORIES } from '~/lib/categories';
 import { pageMeta, SITE } from '~/lib/site';
@@ -43,9 +43,7 @@ export default function Home() {
           aria-labelledby="services-heading"
         >
           <h2 id="services-heading">Local services in {SITE.location}</h2>
-          <p className={`${site.badge} ${site.badgeService}`}>
-            By appointment, in person
-          </p>
+          <Subheading>By appointment, in person</Subheading>
           <Placeholder>one or two sentences about local services.</Placeholder>
           <p className={site.cardAction}>
             <Link to="/services" variant="button">

@@ -1,6 +1,6 @@
 import { data } from "react-router";
 import type { Route } from "./+types/product";
-import { formatPrice, Link, Notice } from "~/design-system";
+import { formatPrice, Link, Notice, Subheading } from "~/design-system";
 import { Placeholder } from "~/components/Placeholder";
 import { getCategory } from "~/lib/categories";
 import { getProduct, productPath } from "~/lib/products.server";
@@ -135,7 +135,7 @@ export default function Product({ loaderData }: Route.ComponentProps) {
       {product.upgradeEligible && (
         <section className={`${site.service} ${site.spaced}`} aria-labelledby="local-help-heading">
           <h2 id="local-help-heading">Local help in {SITE.location}</h2>
-          <p className={`${site.badge} ${site.badgeService}`}>Local service, by appointment</p>
+          <Subheading>Local service, by appointment</Subheading>
           <Placeholder>
             how professional testing and programming can help with this device.
           </Placeholder>

@@ -1,0 +1,17 @@
+/* Small, bold, uppercase line that labels the heading above it.
+   Color: --color-service (sage green), checked by check-contrast.mjs at
+   4.5:1+ on the page, cards and the green services panel in both themes. */
+.subheading {
+  display: block;
+  /* Tight above: pulls up toward the heading it follows (the heading keeps
+     its own 0.75rem bottom margin, so this leaves ~0.25rem). More room below
+     before the body text. */
+  margin: calc(var(--space-3xs) - var(--space-xs)) 0 var(--space-sm);
+  color: var(--color-service);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
+}

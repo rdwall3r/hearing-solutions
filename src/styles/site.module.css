@@ -42,9 +42,6 @@
   display: flex;
   flex-direction: column;
 }
-.card > .badge {
-  align-self: flex-start; /* keep the badge its own width, not full width */
-}
 .cardAction {
   margin-top: auto; /* push to the bottom of the card */
   margin-bottom: 0;
@@ -72,21 +69,6 @@
   display: grid;
   gap: var(--space-md);
   margin-top: var(--space-lg);
-}
-
-.badge {
-  display: inline-block;
-  margin-bottom: var(--space-sm);
-  padding: var(--space-3xs) var(--space-xs);
-  border: var(--border-width) solid currentColor;
-  border-radius: var(--radius-sm);
-  font-weight: var(--weight-semibold);
-}
-/* Text stays the normal text color; only the outline is green. */
-.badgeService {
-  border-color: var(--color-service);
-  color: var(--color-text);
-  background: var(--color-service-bg);
 }
 
 /* Product detail */
