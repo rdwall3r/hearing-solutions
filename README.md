@@ -1,6 +1,6 @@
-# R.D. Waller Hearing Aid Service
+# R.D. Waller Hearing Aid Co.
 
-A small, accessible shop site for R.D. Waller Hearing Aid Service, Ryan Waller's personal side
+A small, accessible shop site for R.D. Waller Hearing Aid Co., Ryan Waller's personal side
 project. It sells OTC hearing aids and assistive listening devices by mail and
 offers a few local services by appointment in Parkville, MO.
 

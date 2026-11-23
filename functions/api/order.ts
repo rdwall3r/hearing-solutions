@@ -185,7 +185,7 @@ function errorPage(status: number, body: Extract<OrderResponse, { ok: false }>):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>There's a problem | R.D. Waller Hearing Aid Service</title>
+<title>There's a problem | R.D. Waller Hearing Aid Co.</title>
 <style>body{font:125%/1.6 system-ui,sans-serif;max-width:40rem;margin:2rem auto;padding:0 1rem;color:#2b2622;background:#fdfaf3}a{color:#2a4763}</style>
 </head>
 <body>

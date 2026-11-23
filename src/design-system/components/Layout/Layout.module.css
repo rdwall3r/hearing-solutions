@@ -72,6 +72,7 @@
 .byline {
   margin: 0;
   color: var(--color-text);
+  font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
 }
 
@@ -129,9 +130,9 @@
    the hamburger. Never the nav wrapped underneath.
 
    The switch point is where the one-row header stops fitting: the site name
-   and tagline (~529px) + gap + four nav links (~546px) + side gutters need
-   ~1205px (75.3em) at the 21.6px base. 78em (1248px) leaves a margin for
-   fonts rendering wider on other systems.
+   "R.D. Waller Hearing Aid Co." (~611px) + gap + four nav links (~546px) +
+   side gutters need ~1287px (80.4em) at the 21.6px base. 83em (1328px)
+   leaves a margin for fonts rendering wider on other systems.
    ⚠ If the site name, tagline or nav labels get longer, re-measure and raise
    this, or the nav will wrap below the tagline again just above it.
 
@@ -152,7 +153,7 @@
   height: 1.4em;
 }
 
-@media (max-width: 77.99em) {
+@media (max-width: 82.99em) {
   /* Two rows: the site name with the Menu button at its top right, then the
      tagline across the full width (not squeezed beside the button).
      .brand's box is dropped (display: contents) so its two children can be

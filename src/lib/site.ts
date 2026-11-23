@@ -1,6 +1,6 @@
 /** Site-wide settings. Values marked TODO need real details before launch. */
 export const SITE = {
-  name: 'R.D. Waller Hearing Aid',
+  name: 'R.D. Waller Hearing Aid Co.',
   tagline: 'Straightforward and conscientious service',
   owner: 'Ryan Waller',
   location: 'Parkville, MO',
@@ -10,7 +10,7 @@ export const SITE = {
   licenseNumber: 'TODO(license)',
 };
 
-/** Builds a page <title>, e.g. "Services | R.D. Waller Hearing Aid Service". */
+/** Builds a page <title>, e.g. "Services | R.D. Waller Hearing Aid Co.". */
 export function pageTitle(title?: string) {
   return title ? `${title} | ${SITE.name}` : SITE.name;
 }
