@@ -116,6 +116,9 @@
   font-weight: var(--weight-semibold);
 }
 
+.breadcrumbs {
+  margin-bottom: var(--space-md); /* 1.5rem, as on rdwaller.net */
+}
 .breadcrumbs ol {
   display: flex;
   flex-wrap: wrap;
