@@ -63,7 +63,6 @@
 .service > h2,
 .service > h3 {
   margin-top: 0;
-  color: var(--color-service);
 }
 .service > :last-child {
   margin-bottom: 0;
@@ -83,8 +82,10 @@
   border-radius: var(--radius-sm);
   font-weight: var(--weight-semibold);
 }
+/* Text stays the normal text color; only the outline is green. */
 .badgeService {
-  color: var(--color-service);
+  border-color: var(--color-service);
+  color: var(--color-text);
   background: var(--color-service-bg);
 }
 
