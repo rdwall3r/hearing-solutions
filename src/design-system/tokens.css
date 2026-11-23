@@ -48,6 +48,8 @@
   /* Neutral grays: for labels that must not look clickable */
   --gray-200: #e6e6e6;
   --gray-300: #cfcfcf;
+  --gray-500: #6e6e6e; /* container edges in dark mode */
+  --gray-600: #5c5c5c; /* charcoal */
   --gray-700: #474747;
   --gray-800: #303030;
 
@@ -119,6 +121,11 @@
   --color-tag: var(--gray-700);
   --color-tag-bg: var(--gray-200);
 
+  /* Container edges (cards, panels): a thin, soft gray that reads more like
+     a shadow than an outline. Decorative only; never for form fields, which
+     need --color-border at 3:1. */
+  --color-edge: var(--gray-600);
+
   /* Inverse: light-on-walnut, for the header and footer. Layout remaps the
      regular roles to these inside those regions, so components need no
      dark variants of their own. Echoes rdwaller.net's dark-mode colors. */
@@ -134,11 +141,12 @@
   /* ---- Typography ------------------------------------------------------- */
   /* Atkinson Hyperlegible Next, as on rdwaller.net: a variable font, so the
      in-between weights (500, 600) are real, not faked. */
-  --font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI",
-    Roboto, Arial, sans-serif;
+  --font-body:
+    'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui,
+    -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   /* Headings and the site name, as on rdwaller.net. Georgia is a system
      font, so nothing extra is downloaded. */
-  --font-heading: Georgia, "Times New Roman", Times, serif;
+  --font-heading: Georgia, 'Times New Roman', Times, serif;
 
   /* Type scale, as on rdwaller.net: each step is 1.25x the one below.
      Base is 20px on small screens and ~21.6px from 800px (html font-size
@@ -179,6 +187,7 @@
   --radius-md: 8px;
   --radius-lg: 14px;
   --border-width: 2px;
+  --edge-width: 2px; /* container edges: cards, panels (see --color-edge) */
 
   /* ---- Focus: strong, two-tone so it shows on light AND dark fills ------ */
   --focus-width: 3px;
@@ -210,7 +219,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-theme='light']) {
     color-scheme: dark;
     --color-bg: var(--night-950);
     --color-surface: var(--night-900);
@@ -249,6 +258,7 @@
     --color-service-bg: var(--spruce-950);
     --color-tag: var(--gray-300);
     --color-tag-bg: var(--gray-800);
+    --color-edge: var(--gray-500);
 
     /* Header & footer: midnight, as rdwaller.net's dark frame */
     --color-inverse-bg: var(--midnight-900);
@@ -262,7 +272,7 @@
   }
 }
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   color-scheme: dark;
   --color-bg: var(--night-950);
   --color-surface: var(--night-900);
@@ -301,6 +311,7 @@
   --color-service-bg: var(--spruce-950);
   --color-tag: var(--gray-300);
   --color-tag-bg: var(--gray-800);
+  --color-edge: var(--gray-500);
 
   /* Header & footer: midnight, as rdwaller.net's dark frame */
   --color-inverse-bg: var(--midnight-900);

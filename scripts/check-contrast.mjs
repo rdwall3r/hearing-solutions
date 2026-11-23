@@ -22,17 +22,24 @@ function declarations(text) {
   }
   return map;
 }
-function block(text, opener) {
-  const start = text.indexOf(opener);
-  if (start === -1) throw new Error(`tokens.css: missing ${opener}`);
-  const end = text.indexOf("}", start);
-  return text.slice(start + opener.length, end);
+// Finds a rule's body by its selector. Quotes in the selector may be single
+// or double, so reformatting tokens.css doesn't break the check.
+function block(text, selector) {
+  const pattern = new RegExp(
+    selector
+      .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+      .replace(/["']/g, "[\"']") + "\\s*\\{",
+  );
+  const match = pattern.exec(text);
+  if (!match) throw new Error(`tokens.css: missing ${selector} {`);
+  const start = match.index + match[0].length;
+  return text.slice(start, text.indexOf("}", start));
 }
 const darkStart = css.indexOf("/* ---- Dark mode");
 if (darkStart === -1) throw new Error("tokens.css: missing Dark mode section");
 const darkCss = css.slice(darkStart);
-const darkAttr = declarations(block(darkCss, ':root[data-theme="dark"] {'));
-const darkMedia = declarations(block(darkCss, ':root:not([data-theme="light"]) {'));
+const darkAttr = declarations(block(darkCss, ':root[data-theme="dark"]'));
+const darkMedia = declarations(block(darkCss, ':root:not([data-theme="light"])'));
 const drift = [...new Set([...darkAttr.keys(), ...darkMedia.keys()])].filter(
   (k) => darkAttr.get(k) !== darkMedia.get(k),
 );
@@ -117,6 +124,9 @@ const pairs = [
   ["--color-text", "--color-service-bg", TEXT, "services body text"],
   ["--color-link", "--color-service-bg", TEXT, "links on services panels"],
   ["--color-tag", "--color-tag-bg", TEXT, "product card tags"],
+  ["--color-edge", "--color-bg", UI, "container edges vs page"],
+  ["--color-edge", "--color-surface", UI, "container edges vs card fill"],
+  ["--color-edge", "--color-service-bg", UI, "container edges vs services panel"],
   // Walnut header & footer (Layout remaps the roles to these)
   ["--color-inverse-text", "--color-inverse-bg", TEXT, "header/footer text"],
   ["--color-inverse-text-muted", "--color-inverse-bg", TEXT, "byline, footer placeholder"],
