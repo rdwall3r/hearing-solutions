@@ -47,11 +47,16 @@ h4 {
   margin: 0 0 var(--space-sm);
   text-wrap: balance;
 }
+/* As on rdwaller.net: the two largest headings are regular weight (Georgia
+   is sturdy enough at these sizes); smaller ones stay bold so they still
+   stand out from body text. */
 h1 {
   font-size: var(--text-3xl);
+  font-weight: 400;
 }
 h2 {
   font-size: var(--text-2xl);
+  font-weight: 400;
   margin-top: var(--space-xl);
 }
 h3 {

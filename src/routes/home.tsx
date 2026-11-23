@@ -12,7 +12,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <>
-      <h1>Serving remotely and in the Kansas City Metro</h1>
+      <h1>Serving by mail and in the Kansas City Metro</h1>
       <Placeholder>short, personal introduction from Ryan.</Placeholder>
 
       <div className={site.paths}>

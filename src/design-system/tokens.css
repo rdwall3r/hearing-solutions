@@ -1,5 +1,5 @@
 /*
- * R.D. Waller Hearing Aid design tokens
+ * R.D. Waller Hearing Aid Service design tokens
  * ---------------------------------------------------------------------------
  * Every value the site uses comes from here. Components reference these
  * custom properties and never hard-code colors, sizes, or spacing.
@@ -115,7 +115,9 @@
   /* ---- Typography ------------------------------------------------------- */
   --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI",
     Roboto, Arial, sans-serif;
-  --font-heading: var(--font-body);
+  /* Headings and the site name, as on rdwaller.net. Georgia is a system
+     font, so nothing extra is downloaded. */
+  --font-heading: Georgia, "Times New Roman", Times, serif;
 
   /* Base is 20px (assuming the browser default of 16px); scale ratio 1.2.
      All sizes are rem so user font-size settings and zoom are respected. */
