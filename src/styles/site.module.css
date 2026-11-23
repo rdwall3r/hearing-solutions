@@ -13,10 +13,23 @@
   margin-block: var(--space-md) var(--space-lg);
 }
 
-.inlineList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2xs) var(--space-md);
+/* Category links on the home page's "Shop by mail" card: a grid of equal
+   columns, as many as fit, down to one column on narrow screens.
+   min(12rem, 100%) lets a column shrink below 12rem when the card itself is
+   narrower (about 220px inside the card at 320px), instead of overflowing. */
+.categoryList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));
+  /* No row gap: each link is already a 44px target, which spaces the rows. */
+  gap: 0 var(--space-md);
+}
+/* Each link is at least 44px tall to tap (2.2rem at the 20px base), with
+   the text centered vertically. Underline and colors are unchanged: they
+   come from the global link styles. */
+.categoryLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.2rem;
 }
 
 /* Two clear paths on the home page: mail-order shop vs local services. */
@@ -29,6 +42,7 @@
 .path {
   padding: var(--space-md);
   border: var(--edge-width) solid var(--color-edge);
+  border-left: 8px solid var(--color-shop); /* pairs with .service's green bar */
   border-radius: var(--radius-md);
   background: var(--color-surface);
 }

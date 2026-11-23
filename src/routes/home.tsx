@@ -24,10 +24,15 @@ export default function Home() {
           <Placeholder>
             one or two sentences about ordering products online.
           </Placeholder>
-          <ul role="list" className={`list-reset ${site.inlineList}`}>
+          <ul role="list" className={`list-reset ${site.categoryList}`}>
             {CATEGORIES.map((c) => (
               <li key={c.slug}>
-                <Link to={`/products/${c.slug}`}>{c.label}</Link>
+                <Link
+                  to={`/products/${c.slug}`}
+                  className={site.categoryLink}
+                >
+                  {c.label}
+                </Link>
               </li>
             ))}
           </ul>

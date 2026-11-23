@@ -127,6 +127,8 @@ const pairs = [
   ["--color-link", "--color-service-bg", TEXT, "links on services panels"],
   ["--color-tag", "--color-tag-bg", TEXT, "product card tags"],
   ["--color-edge", "--color-bg", UI, "container edges vs page"],
+  ["--color-shop", "--color-bg", UI, "shop card bar vs page"],
+  ["--color-service", "--color-bg", UI, "services bar vs page"],
   ["--color-edge", "--color-surface", UI, "container edges vs card fill"],
   ["--color-edge", "--color-service-bg", UI, "container edges vs services panel"],
   // Walnut header & footer (Layout remaps the roles to these)

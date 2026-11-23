@@ -116,6 +116,9 @@
   --color-service: var(--spruce-700);
   --color-service-bg: var(--spruce-100);
 
+  /* Mail-order shop: the matching left bar on the "Shop by mail" card */
+  --color-shop: var(--walnut-900);
+
   /* Tags (e.g. "OTC hearing aid" on product cards): plain gray labels, so
      they aren't mistaken for buttons or links */
   --color-tag: var(--gray-700);
@@ -255,6 +258,8 @@
     --color-warning-bg: var(--honey-950);
 
     --color-service: var(--seafoam-400);
+
+    --color-shop: var(--stone-500);
     --color-service-bg: var(--spruce-950);
     --color-tag: var(--gray-300);
     --color-tag-bg: var(--gray-800);
@@ -308,6 +313,8 @@
   --color-warning-bg: var(--honey-950);
 
   --color-service: var(--seafoam-400);
+
+  --color-shop: var(--stone-500);
   --color-service-bg: var(--spruce-950);
   --color-tag: var(--gray-300);
   --color-tag-bg: var(--gray-800);

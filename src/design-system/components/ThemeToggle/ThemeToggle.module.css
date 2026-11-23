@@ -18,6 +18,10 @@
 .toggle:hover {
   background: var(--color-primary-tint);
 }
+/* Grows slightly on hover and keyboard focus, as on rdwaller.net. */
+.toggle:is(:hover, :focus-visible) {
+  transform: scale(1.1);
+}
 
 .icon {
   width: 1rem;
