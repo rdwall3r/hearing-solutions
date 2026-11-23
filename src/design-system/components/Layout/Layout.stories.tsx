@@ -7,8 +7,8 @@ const meta = {
   component: Layout,
   parameters: { layout: 'fullscreen' },
   args: {
-    siteName: 'R.D. Waller Hearing Solutions',
-    byline: 'Straightforward, comprehensive service',
+    siteName: 'R.D. Waller Hearing Aid',
+    byline: 'Straightforward and conscientious service',
     nav: [
       { to: '/products', label: 'Products' },
       { to: '/services', label: 'Local services' },

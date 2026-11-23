@@ -11,7 +11,7 @@ export default function About() {
     <>
       <h1>About</h1>
       <Placeholder>
-        a note that R.D. Waller Hearing Solutions is Ryan's personal side project, not a company.
+        a note that R.D. Waller Hearing Aid Service is Ryan's personal side project, not a company.
       </Placeholder>
 
       <h2>Background</h2>
