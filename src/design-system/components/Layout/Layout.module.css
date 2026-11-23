@@ -46,7 +46,8 @@
   align-items: last baseline;
   justify-content: space-between;
   gap: var(--space-xs) var(--space-lg);
-  padding-block: var(--space-sm) var(--space-2xs); /* top, bottom */
+  /* bottom: halfway between --space-2xs (0.5rem) and --space-xs (0.75rem) */
+  padding-block: var(--space-sm) var(--space-3xs);
 }
 
 .brand {
@@ -112,17 +113,28 @@
 }
 /* Current page: semibold and a thicker underline, so it isn't marked by
    color alone. */
-.navLink[aria-current="page"] {
+.navLink[aria-current='page'] {
   color: var(--color-text);
   font-weight: var(--weight-semibold);
   text-decoration: underline;
   text-decoration-thickness: 0.14em;
 }
 
-/* ---- Small-screen menu -------------------------------------------------
+/* ---- Hamburger menu ----------------------------------------------------
+   Two layouts only: the nav on one row beside the site name and tagline, or
+   the hamburger. Never the nav wrapped underneath.
+
+   The switch point is where the one-row header stops fitting: the site name
+   and tagline (~529px) + gap + four nav links (~546px) + side gutters need
+   ~1205px (75.3em) at the 21.6px base. 78em (1248px) leaves a margin for
+   fonts rendering wider on other systems.
+   ⚠ If the site name, tagline or nav labels get longer, re-measure and raise
+   this, or the nav will wrap below the tagline again just above it.
+
+   em-based, so it follows the browser's default font size and zoom: zooming
+   in on a desktop switches to the hamburger too.
    [data-menu] is set on the header only after JavaScript runs, so without JS
-   the nav is always visible. 48em follows the browser's default font size
-   and zoom, so zooming in on a desktop also switches to the menu. */
+   the nav is always visible (and may wrap). */
 /* No box of its own unless the menu is active, so on wide screens (and
    without JS) the nav lays out exactly as if the wrapper weren't there. */
 .menu {
@@ -136,7 +148,7 @@
   height: 1.4em;
 }
 
-@media (max-width: 47.99em) {
+@media (max-width: 77.99em) {
   /* Two rows: the site name with the Menu button at its top right, then the
      tagline across the full width (not squeezed beside the button).
      .brand's box is dropped (display: contents) so its two children can be
@@ -185,7 +197,7 @@
     background: var(--color-surface);
     box-shadow: 0 0.4rem 1.2rem rgb(0 0 0 / 0.18);
   }
-  .header[data-menu="closed"] .nav {
+  .header[data-menu='closed'] .nav {
     display: none;
   }
   .header[data-menu] .navList {
