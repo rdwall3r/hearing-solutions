@@ -40,10 +40,13 @@
 .header .inner {
   display: flex;
   flex-wrap: wrap; /* nav drops below the name on narrow screens and zoom */
-  align-items: center;
+  /* Nav text sits on the same baseline as the tagline, as on rdwaller.net.
+     flex-end is the fallback for browsers without last-baseline support. */
+  align-items: flex-end;
+  align-items: last baseline;
   justify-content: space-between;
   gap: var(--space-xs) var(--space-lg);
-  padding-block: var(--space-sm);
+  padding-block: var(--space-sm) var(--space-2xs); /* top, bottom */
 }
 
 .brand {
@@ -51,10 +54,13 @@
   flex-direction: column;
 }
 
+/* Site name and tagline as on rdwaller.net: a large Georgia name over a
+   tagline at full body size. */
 .siteName {
   font-family: var(--font-heading);
-  font-size: var(--text-xl);
-  font-weight: 700;
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
   color: var(--color-text);
   text-decoration: none;
 }
@@ -65,8 +71,8 @@
 
 .byline {
   margin: 0;
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-tight);
 }
 
 /* ---- Navigation -------------------------------------------------------- */
@@ -76,22 +82,41 @@
   gap: var(--space-3xs) var(--space-xs);
 }
 
+/* Nav as on rdwaller.net: regular weight, a little heavier on hover, and
+   semibold + underlined for the current page.
+   Changing weight would normally change a link's width and nudge its
+   neighbors. To prevent that, a hidden semibold copy of the label (from
+   data-label) sits in the same grid cell and sets the width. */
 .navLink {
-  display: inline-block;
+  display: inline-grid;
   padding: var(--space-3xs) var(--space-2xs);
   border-radius: var(--radius-sm);
   color: var(--color-link);
-  font-weight: 700;
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
   text-decoration: none;
 }
+.navLink > span,
+.navLink::before {
+  grid-area: 1 / 1;
+}
+.navLink::before {
+  content: attr(data-label);
+  font-weight: var(--weight-semibold);
+  visibility: hidden;
+}
 .navLink:hover {
+  color: var(--color-link-hover);
+  font-weight: var(--weight-medium);
   text-decoration: underline;
 }
-/* Current page: a thicker underline and a color change, so it isn't marked by color alone. */
+/* Current page: semibold and a thicker underline, so it isn't marked by
+   color alone. */
 .navLink[aria-current="page"] {
   color: var(--color-text);
+  font-weight: var(--weight-semibold);
   text-decoration: underline;
-  text-decoration-thickness: 0.18em;
+  text-decoration-thickness: 0.14em;
 }
 
 /* ---- Small-screen menu -------------------------------------------------
@@ -168,7 +193,7 @@
 }
 
 .footer {
-  padding-block: var(--space-lg);
+  padding-block: var(--space-lg) var(--space-sm); /* top, bottom */
   font-size: var(--text-sm);
 }
 /* The theme toggle sits at the bottom right, beside the last row of footer

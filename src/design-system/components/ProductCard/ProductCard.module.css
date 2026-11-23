@@ -68,7 +68,7 @@
 }
 
 .price {
-  font-weight: 700;
+  font-weight: var(--weight-semibold);
   font-size: var(--text-lg);
 }
 

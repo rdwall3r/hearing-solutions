@@ -7,11 +7,11 @@
 }
 
 .label {
-  font-weight: 700;
+  font-weight: var(--weight-semibold);
 }
 
 .optional {
-  font-weight: 400;
+  font-weight: var(--weight-regular);
   color: var(--color-text-muted);
 }
 

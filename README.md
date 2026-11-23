@@ -1,6 +1,6 @@
-# R.D. Waller Hearing Aid Service
+# R.D. Waller Hearing Solutions
 
-A small, accessible shop site for R.D. Waller Hearing Aid Service, Ryan Waller's personal side
+A small, accessible shop site for R.D. Waller Hearing Solutions, Ryan Waller's personal side
 project. It sells OTC hearing aids and assistive listening devices by mail and
 offers a few local services by appointment in Parkville, MO.
 
@@ -159,4 +159,4 @@ and 400% zoom, and a 320px-wide window.
 - **Product descriptions** are plain paragraphs. Markdown formatting (links,
   bold, lists) isn't rendered yet.
 - **Fonts** load from Google Fonts, a third-party request. Self-hosting
-  Atkinson Hyperlegible would remove it.
+  Atkinson Hyperlegible Next would remove it.

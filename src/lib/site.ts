@@ -1,7 +1,7 @@
 /** Site-wide settings. Values marked TODO need real details before launch. */
 export const SITE = {
-  name: 'R.D. Waller Hearing Aid Service',
-  tagline: 'Comprehensive solutions · Straightforward service',
+  name: 'R.D. Waller Hearing Solutions',
+  tagline: 'Straightforward, comprehensive service',
   owner: 'Ryan Waller',
   location: 'Parkville, MO',
   // TODO(launch): the real production URL. Used for absolute URLs in JSON-LD.
@@ -10,7 +10,7 @@ export const SITE = {
   licenseNumber: 'TODO(license)',
 };
 
-/** Builds a page <title>, e.g. "Services | R.D. Waller Hearing Aid Service". */
+/** Builds a page <title>, e.g. "Services | R.D. Waller Hearing Solutions". */
 export function pageTitle(title?: string) {
   return title ? `${title} | ${SITE.name}` : SITE.name;
 }

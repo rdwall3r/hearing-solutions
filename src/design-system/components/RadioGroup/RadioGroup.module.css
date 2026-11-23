@@ -8,11 +8,11 @@
 .legend {
   padding: 0;
   margin-bottom: var(--space-3xs);
-  font-weight: 700;
+  font-weight: var(--weight-semibold);
 }
 
 .optional {
-  font-weight: 400;
+  font-weight: var(--weight-regular);
   color: var(--color-text-muted);
 }
 

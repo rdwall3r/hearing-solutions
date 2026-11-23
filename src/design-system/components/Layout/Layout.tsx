@@ -81,9 +81,12 @@ export function Layout({
                     <NavLink
                       to={item.to}
                       className={styles.navLink}
+                      // A hidden semibold copy of the label reserves the
+                      // width, so weight changes don't shift the nav.
+                      data-label={item.label}
                       end={item.to === '/'}
                     >
-                      {item.label}
+                      <span>{item.label}</span>
                     </NavLink>
                   </li>
                 ))}

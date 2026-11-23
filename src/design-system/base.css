@@ -16,6 +16,12 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
+/* ~13% larger from 800px, as on rdwaller.net (20px → ~21.6px base). */
+@media (min-width: 50em) {
+  html {
+    font-size: 135%;
+  }
+}
 
 /* Photos are toned down a little in dark mode so they don't glare. */
 @media (prefers-color-scheme: dark) {
@@ -42,29 +48,30 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
-  margin: 0 0 var(--space-sm);
+  margin: var(--space-md) 0 var(--space-xs);
   text-wrap: balance;
 }
-/* As on rdwaller.net: the two largest headings are regular weight (Georgia
-   is sturdy enough at these sizes); smaller ones stay bold so they still
-   stand out from body text. */
+/* As on rdwaller.net: h1 and h2 are fairly small and regular weight, letting
+   Georgia's shapes carry them; h3 and h4 are bold at body size. */
 h1 {
-  font-size: var(--text-3xl);
-  font-weight: 400;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-regular);
+  margin-top: 0;
 }
 h2 {
-  font-size: var(--text-2xl);
-  font-weight: 400;
-  margin-top: var(--space-xl);
-}
-h3 {
-  font-size: var(--text-xl);
-  margin-top: var(--space-lg);
-}
-h4 {
   font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+}
+h3,
+h4 {
+  font-size: var(--text-base);
+}
+
+strong,
+b {
+  font-weight: var(--weight-semibold);
 }
 
 p,
@@ -94,7 +101,7 @@ svg {
 a {
   color: var(--color-link);
   text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 0.23em; /* as on rdwaller.net */
 }
 a:hover {
   color: var(--color-link-hover);
