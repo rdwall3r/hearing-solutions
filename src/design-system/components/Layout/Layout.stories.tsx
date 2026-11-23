@@ -8,7 +8,7 @@ const meta = {
   parameters: { layout: 'fullscreen' },
   args: {
     siteName: 'R.D. Waller Hearing Aid',
-    byline: 'Straightforward, conscientious service',
+    byline: 'Straightforward and conscientious service',
     nav: [
       { to: '/products', label: 'Products' },
       { to: '/services', label: 'Local services' },
