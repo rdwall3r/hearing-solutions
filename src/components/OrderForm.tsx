@@ -241,7 +241,13 @@ export function OrderForm({ products }: { products: SelectOption[] }) {
       />
 
       <div className={styles.turnstile}>
-        <div className="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-theme="light" />
+        <div
+          className="cf-turnstile"
+          data-sitekey={TURNSTILE_SITE_KEY}
+          data-theme="light"
+          // Only show the checkbox to visitors Cloudflare isn't sure about.
+          data-appearance="interaction-only"
+        />
       </div>
 
       <Button type="submit" disabled={status === "submitting"}>

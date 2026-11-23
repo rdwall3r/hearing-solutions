@@ -46,8 +46,7 @@
   align-items: last baseline;
   justify-content: space-between;
   gap: var(--space-xs) var(--space-lg);
-  /* bottom: halfway between --space-2xs (0.5rem) and --space-xs (0.75rem) */
-  padding-block: var(--space-sm) var(--space-3xs);
+  padding-block: var(--space-sm) var(--space-xs); /* top, bottom */
 }
 
 .brand {
@@ -81,6 +80,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3xs) var(--space-xs);
+  /* The links' bottom padding (tap area) hangs below the tagline's baseline.
+     Pull it back by the same amount so it sits inside the header's bottom
+     padding instead of making the header taller. Keeps the header the same
+     height in the one-row and hamburger layouts. */
+  margin-bottom: calc(-1 * var(--space-3xs));
 }
 
 /* Nav as on rdwaller.net: regular weight, a little heavier on hover, and

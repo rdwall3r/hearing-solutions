@@ -2,9 +2,11 @@
   max-width: 36rem;
 }
 
-.turnstile {
-  /* Reserve the widget's height so the button doesn't jump when it loads. */
-  min-height: 65px;
+/* Turnstile runs in "interaction-only" mode: most visitors never see it, so
+   no space is reserved. The radio group above already leaves --space-md.
+   If Cloudflare does show the checkbox, it gets the same gap before the
+   button (the button moves down once, only for those visitors). */
+.turnstile iframe {
   margin-bottom: var(--space-md);
 }
 
