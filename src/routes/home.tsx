@@ -16,7 +16,10 @@ export default function Home() {
       <Placeholder>short, personal introduction from Ryan.</Placeholder>
 
       <div className={site.paths}>
-        <section className={site.path} aria-labelledby="shop-heading">
+        <section
+          className={`${site.path} ${site.card}`}
+          aria-labelledby="shop-heading"
+        >
           <h2 id="shop-heading">Shop by mail</h2>
           <Placeholder>
             one or two sentences about ordering products online.
@@ -28,20 +31,23 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <p>
+          <p className={site.cardAction}>
             <Link to="/products" variant="button">
               All products
             </Link>
           </p>
         </section>
 
-        <section className={site.service} aria-labelledby="services-heading">
+        <section
+          className={`${site.service} ${site.card}`}
+          aria-labelledby="services-heading"
+        >
           <h2 id="services-heading">Local services in {SITE.location}</h2>
           <p className={`${site.badge} ${site.badgeService}`}>
             By appointment, in person
           </p>
           <Placeholder>one or two sentences about local services.</Placeholder>
-          <p>
+          <p className={site.cardAction}>
             <Link to="/services" variant="button">
               Local services
             </Link>

@@ -28,7 +28,7 @@
   /* Secondary (outline) button, i.e. the Menu button */
   --color-primary: var(--color-inverse-text);
   --color-primary-hover: var(--color-inverse-text);
-  --color-info-bg: var(--color-inverse-bg-hover);
+  --color-primary-tint: var(--color-inverse-bg-hover);
   --color-focus: var(--color-inverse-focus);
   --color-focus-halo: var(--color-inverse-bg);
 

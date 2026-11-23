@@ -38,9 +38,18 @@
 
   --maroon-100: #f6e1d8;
   --maroon-800: #800000; /* rdwaller.net --color-maroon */
+  --maroon-900: #5c0000;
+
+  --red-700: #b3261e; /* errors: a truer red, so they don't read as buttons */
 
   --honey-100: #f8ebc9;
   --honey-700: #6e5310;
+
+  /* Neutral grays: for labels that must not look clickable */
+  --gray-200: #e6e6e6;
+  --gray-300: #cfcfcf;
+  --gray-700: #474747;
+  --gray-800: #303030;
 
   /* Dark-mode shades (rdwaller.net's dark theme, plus tints built from it) */
   --night-950: #0f1115; /* page; same as --ink-950 */
@@ -59,6 +68,9 @@
   --coral-300: #ff9f8f;
   --gold-300: #e8c66a;
   --maroon-950: #2c1515;
+  --rose-300: #e8a0ab; /* buttons in dark mode: maroon's light counterpart */
+  --rose-200: #f2c2ca;
+  --rose-950: #3a1a20;
   --spruce-950: #10261f;
   --sapphire-950: #16213d;
   --honey-950: #2b2410;
@@ -76,9 +88,11 @@
   --color-link: var(--sapphire-600);
   --color-link-hover: var(--spruce-700);
 
-  --color-primary: var(--sapphire-600);
-  --color-primary-hover: var(--sapphire-800);
+  /* Buttons: rdwaller.net's maroon */
+  --color-primary: var(--maroon-800);
+  --color-primary-hover: var(--maroon-900);
   --color-on-primary: var(--vellum-50);
+  --color-primary-tint: var(--maroon-100); /* outline button hover */
 
   --color-accent: var(--clay-600);
   --color-accent-hover: var(--clay-700);
@@ -87,7 +101,7 @@
   --color-focus: var(--sapphire-800);
   --color-focus-halo: var(--vellum-50);
 
-  --color-error: var(--maroon-800);
+  --color-error: var(--red-700);
   --color-error-bg: var(--maroon-100);
   --color-success: var(--spruce-700);
   --color-success-bg: var(--spruce-100);
@@ -99,6 +113,11 @@
   /* Local services get their own tint so they read as separate from shop */
   --color-service: var(--spruce-700);
   --color-service-bg: var(--spruce-100);
+
+  /* Tags (e.g. "OTC hearing aid" on product cards): plain gray labels, so
+     they aren't mistaken for buttons or links */
+  --color-tag: var(--gray-700);
+  --color-tag-bg: var(--gray-200);
 
   /* Inverse: light-on-walnut, for the header and footer. Layout remaps the
      regular roles to these inside those regions, so components need no
@@ -205,9 +224,10 @@
     --color-link: var(--cornflower-300);
     --color-link-hover: var(--seafoam-400);
 
-    --color-primary: var(--cornflower-300);
-    --color-primary-hover: var(--cornflower-200);
+    --color-primary: var(--rose-300);
+    --color-primary-hover: var(--rose-200);
     --color-on-primary: var(--night-950);
+    --color-primary-tint: var(--rose-950);
 
     --color-accent: var(--apricot-300);
     --color-accent-hover: var(--apricot-200);
@@ -227,6 +247,8 @@
 
     --color-service: var(--seafoam-400);
     --color-service-bg: var(--spruce-950);
+    --color-tag: var(--gray-300);
+    --color-tag-bg: var(--gray-800);
 
     /* Header & footer: midnight, as rdwaller.net's dark frame */
     --color-inverse-bg: var(--midnight-900);
@@ -254,9 +276,10 @@
   --color-link: var(--cornflower-300);
   --color-link-hover: var(--seafoam-400);
 
-  --color-primary: var(--cornflower-300);
-  --color-primary-hover: var(--cornflower-200);
+  --color-primary: var(--rose-300);
+  --color-primary-hover: var(--rose-200);
   --color-on-primary: var(--night-950);
+  --color-primary-tint: var(--rose-950);
 
   --color-accent: var(--apricot-300);
   --color-accent-hover: var(--apricot-200);
@@ -276,6 +299,8 @@
 
   --color-service: var(--seafoam-400);
   --color-service-bg: var(--spruce-950);
+  --color-tag: var(--gray-300);
+  --color-tag-bg: var(--gray-800);
 
   /* Header & footer: midnight, as rdwaller.net's dark frame */
   --color-inverse-bg: var(--midnight-900);

@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 .toggle:hover {
-  background: var(--color-info-bg);
+  background: var(--color-primary-tint);
 }
 
 .icon {

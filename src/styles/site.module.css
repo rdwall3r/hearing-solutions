@@ -36,6 +36,21 @@
   margin-top: 0;
 }
 
+/* Home page cards: content stacks from the top and the button sits at the
+   bottom left, so both cards' buttons line up however much text is above. */
+.card {
+  display: flex;
+  flex-direction: column;
+}
+.card > .badge {
+  align-self: flex-start; /* keep the badge its own width, not full width */
+}
+.cardAction {
+  margin-top: auto; /* push to the bottom of the card */
+  margin-bottom: 0;
+  padding-top: var(--space-md); /* never closer than this to the content */
+}
+
 /* Local services are always tinted sage so they never look like mail-order
    products. */
 .service {

@@ -72,11 +72,12 @@
   font-size: var(--text-lg);
 }
 
+/* A plain gray label: no border and no color, so it doesn't look like a
+   button or link. */
 .tag {
   padding: 0 var(--space-2xs);
-  border: 1px solid currentColor;
   border-radius: var(--radius-sm);
-  color: var(--color-info);
-  background: var(--color-info-bg);
+  color: var(--color-tag);
+  background: var(--color-tag-bg);
   font-size: var(--text-sm);
 }
