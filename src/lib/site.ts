@@ -1,7 +1,7 @@
 /** Site-wide settings. Values marked TODO need real details before launch. */
 export const SITE = {
   name: 'R.D. Waller Hearing Aid',
-  tagline: 'Straightforward and conscientious service',
+  tagline: 'Straightforward, conscientious service',
   owner: 'Ryan Waller',
   location: 'Parkville, MO',
   // TODO(launch): the real production URL. Used for absolute URLs in JSON-LD.

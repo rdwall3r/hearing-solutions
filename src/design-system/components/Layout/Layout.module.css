@@ -137,20 +137,32 @@
 }
 
 @media (max-width: 47.99em) {
-  /* Keep the button on the first row, top right: the brand shrinks (its
-     text wraps if it must) rather than pushing the button down. */
+  /* Two rows: the site name with the Menu button at its top right, then the
+     tagline across the full width (not squeezed beside the button).
+     .brand's box is dropped (display: contents) so its two children can be
+     placed in the grid directly. */
   .header[data-menu] .inner {
-    column-gap: var(--space-sm);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 0 var(--space-sm);
   }
   .header[data-menu] .brand {
-    flex: 1 1 0;
-    min-width: 0;
+    display: contents;
+  }
+  .header[data-menu] .siteName {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .header[data-menu] .byline {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
   .header[data-menu] .menu {
     display: block;
     position: relative; /* the dropdown is anchored here */
-    flex: none;
-    align-self: flex-start;
+    grid-column: 2;
+    grid-row: 1;
   }
   /* Icon-only: a square the same height as the small button (44px). */
   .header[data-menu] .menuButton {
@@ -181,7 +193,9 @@
     gap: 0;
   }
   .header[data-menu] .navLink {
-    display: block;
+    /* grid, not block: the label and its hidden width-reserving copy must
+       share one grid cell (see .navLink) */
+    display: grid;
     padding: var(--space-2xs) var(--space-xs); /* comfortable tap targets */
   }
 }
