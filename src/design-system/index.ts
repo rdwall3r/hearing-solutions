@@ -12,6 +12,6 @@ export { Select, type SelectProps, type SelectOption } from "./components/Select
 export { Textarea, type TextareaProps } from "./components/Textarea/Textarea";
 export { RadioGroup, type RadioGroupProps, type RadioOption } from "./components/RadioGroup/RadioGroup";
 export { FieldError, type FieldErrorProps } from "./components/FieldError/FieldError";
-export { Subheading, type SubheadingProps } from "./components/Subheading/Subheading";
+export { Subheading, type SubheadingProps, type SubheadingColor } from "./components/Subheading/Subheading";
 export { Notice, type NoticeProps, type NoticeTone } from "./components/Notice/Notice";
 export { formatPrice } from "./utils";

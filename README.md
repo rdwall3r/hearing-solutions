@@ -2,7 +2,7 @@
 
 A small, accessible shop site for R.D. Waller Hearing Aid Co., Ryan Waller's personal side
 project. It sells OTC hearing aids and assistive listening devices by mail and
-offers a few local services by appointment in Parkville, MO.
+offers a few local services by appointment in Greater Kansas City.
 
 - **React Router v8** in framework mode, TypeScript, Vite
 - **Fully pre-rendered**: every content page is static HTML in `build/client`
@@ -101,15 +101,15 @@ src/
 
 ### Environment variables
 
-| Name                      | Where it's used            | Secret? | Notes                                                    |
-| ------------------------- | -------------------------- | ------- | -------------------------------------------------------- |
-| `VITE_TURNSTILE_SITE_KEY` | Build (browser)            | No      | Turnstile site key. Falls back to Cloudflare's test key. |
-| `TURNSTILE_SECRET_KEY`    | Pages Function             | **Yes** | Turnstile secret key. Without it, every submission fails. |
-| `EMAIL_API_URL`           | Pages Function             | No      | Your email provider's "send" endpoint.                   |
-| `EMAIL_API_KEY`           | Pages Function             | **Yes** | Your email provider's API key.                           |
-| `EMAIL_TO`                | Pages Function             | No      | Where inquiries are delivered (Ryan's inbox).            |
-| `EMAIL_FROM`              | Pages Function             | No      | A sender address verified with the email provider.       |
-| `EMAIL_DRY_RUN`           | Pages Function             | No      | `true` logs emails instead of sending them.              |
+| Name                      | Where it's used | Secret? | Notes                                                     |
+| ------------------------- | --------------- | ------- | --------------------------------------------------------- |
+| `VITE_TURNSTILE_SITE_KEY` | Build (browser) | No      | Turnstile site key. Falls back to Cloudflare's test key.  |
+| `TURNSTILE_SECRET_KEY`    | Pages Function  | **Yes** | Turnstile secret key. Without it, every submission fails. |
+| `EMAIL_API_URL`           | Pages Function  | No      | Your email provider's "send" endpoint.                    |
+| `EMAIL_API_KEY`           | Pages Function  | **Yes** | Your email provider's API key.                            |
+| `EMAIL_TO`                | Pages Function  | No      | Where inquiries are delivered (Ryan's inbox).             |
+| `EMAIL_FROM`              | Pages Function  | No      | A sender address verified with the email provider.        |
+| `EMAIL_DRY_RUN`           | Pages Function  | No      | `true` logs emails instead of sending them.               |
 
 `VITE_TURNSTILE_SITE_KEY` is read at **build** time, so set it for the build
 environment. The rest are read by the function at request time.

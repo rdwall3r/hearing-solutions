@@ -224,7 +224,7 @@
 }
 
 .footer {
-  padding-block: var(--space-lg) var(--space-sm); /* top, bottom */
+  padding-block: var(--space-md) var(--space-sm); /* top, bottom */
   font-size: var(--text-sm);
 }
 /* The theme toggle sits at the bottom right, beside the last row of footer

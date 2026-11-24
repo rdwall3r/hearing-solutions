@@ -2,12 +2,10 @@
 export const SITE = {
   name: 'R.D. Waller Hearing Aid Co.',
   tagline: 'Straightforward and conscientious service',
-  owner: 'Ryan Waller',
-  location: 'Parkville, MO',
-  // TODO(launch): the real production URL. Used for absolute URLs in JSON-LD.
-  url: 'https://example.com',
-  // TODO(launch): Missouri hearing instrument specialist license number.
-  licenseNumber: 'TODO(license)',
+  owner: 'Ryan Waller, BHS, HIS, CPACC',
+  location: 'Greater Kansas City',
+  url: 'https://hearing.rdwaller.net',
+  licenseNumber: '2013007124',
 };
 
 /** Builds a page <title>, e.g. "Services | R.D. Waller Hearing Aid Co.". */

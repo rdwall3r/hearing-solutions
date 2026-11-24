@@ -21,7 +21,7 @@ export default function Services() {
   return (
     <>
       <h1>Local services</h1>
-      <Subheading>
+      <Subheading color="service">
         In person, by appointment, in {SITE.location}. Not mail order.
       </Subheading>
       <Placeholder>

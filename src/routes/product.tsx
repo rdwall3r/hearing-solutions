@@ -135,7 +135,7 @@ export default function Product({ loaderData }: Route.ComponentProps) {
       {product.upgradeEligible && (
         <section className={`${site.service} ${site.spaced}`} aria-labelledby="local-help-heading">
           <h2 id="local-help-heading">Local help in {SITE.location}</h2>
-          <Subheading>Local service, by appointment</Subheading>
+          <Subheading color="service">Local service, by appointment</Subheading>
           <Placeholder>
             how professional testing and programming can help with this device.
           </Placeholder>

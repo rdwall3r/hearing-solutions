@@ -12,7 +12,8 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <>
-      <h1>Serving Missouri residents in the Kansas City metro</h1>
+      <h1>Comprehensive hearing solutions for adults</h1>
+      <Subheading>By mail or in greater Kansas City</Subheading>
       <Placeholder>short, personal introduction from Ryan.</Placeholder>
 
       <div className={site.paths}>
@@ -27,10 +28,7 @@ export default function Home() {
           <ul role="list" className={`list-reset ${site.categoryList}`}>
             {CATEGORIES.map((c) => (
               <li key={c.slug}>
-                <Link
-                  to={`/products/${c.slug}`}
-                  className={site.categoryLink}
-                >
+                <Link to={`/products/${c.slug}`} className={site.categoryLink}>
                   {c.label}
                 </Link>
               </li>
@@ -48,7 +46,7 @@ export default function Home() {
           aria-labelledby="services-heading"
         >
           <h2 id="services-heading">Local services in {SITE.location}</h2>
-          <Subheading>By appointment, in person</Subheading>
+          <Subheading color="service">By appointment, in person</Subheading>
           <Placeholder>one or two sentences about local services.</Placeholder>
           <p className={site.cardAction}>
             <Link to="/services" variant="button">
