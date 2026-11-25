@@ -15,9 +15,8 @@ export default function Home() {
       <h1>Comprehensive hearing solutions for adults</h1>
       <Subheading>By mail or in person</Subheading>
       <p>
-        Thank you for visiting. I run a small operation based in Parkville,
-        Missouri. I value simplicity, transparency, trustworthiness, and
-        effectiveness.
+        Thank you for visiting. I run a small operation in {SITE.location}. I
+        value simplicity, transparency, trustworthiness, and effectiveness.
       </p>
 
       <div className={site.paths}>
