@@ -14,7 +14,11 @@ export default function Home() {
     <>
       <h1>Comprehensive hearing solutions for adults</h1>
       <Subheading>By mail or in greater Kansas City</Subheading>
-      <Placeholder>short, personal introduction from Ryan.</Placeholder>
+      <p>
+        Welcome to my hearing aid shop. I run a small operation based in
+        Parkville, Missouri. I value business that is simple, transparent,
+        trustworthy, and effective.
+      </p>
 
       <div className={site.paths}>
         <section
